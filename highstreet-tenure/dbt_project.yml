@@ -1,0 +1,21 @@
+name: "highstreet_tenure"
+version: "1.0.0"
+
+config-version: 2
+
+profile: "highstreet_local"
+
+defaults:
+  model:
+    +materialized: view
+
+# Define model paths – you can add staging, marts etc. later
+model-paths: ["models"]
+
+models:
+  highstreet_tenure:
+    +schema: analytics  # use a dedicated schema to avoid cluttering public
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
