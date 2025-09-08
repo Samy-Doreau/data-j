@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: highstreet
+    database: highstreet
+    schema: public
+    tables:
+      - name: new_businesses
+        description: "Consolidated new businesses data loaded from CSV"
+      - name: accounts_closed
+        description: "Consolidated closed accounts data loaded from CSV"
+      - name: accounts_relief
+        description: "Consolidated accounts with relief data loaded from CSV"
+      - name: accounts_no_relief
+        description: "Consolidated accounts with no relief data loaded from CSV"
+      - name: filename_mapping
+        description: "Source file name to valid from and to date"

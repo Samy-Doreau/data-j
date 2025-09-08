@@ -11,6 +11,14 @@ from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.engine import Engine
 
 DATABASE_URL = os.getenv("DATABASE_URL", "postgresql+psycopg2://postgres:postgres@localhost:5432/highstreet")
+CSV_FILE_MAP = {
+    "new_businesses_consolidated.csv": "new_businesses",
+    "accounts_closed_consolidated.csv": "accounts_closed",
+    "accounts_relief_consolidated.csv": "accounts_relief",
+    "accounts_no_relief_consolidated.csv": "accounts_no_relief",
+    "filename_map.csv": "filename_mapping",
+}
+
 
 metadata = MetaData()
 
@@ -21,6 +29,7 @@ for table_name in [
     "accounts_closed",
     "accounts_relief",
     "accounts_no_relief",
+    "filename_mapping",
 ]:
     TABLES[table_name] = Table(
         table_name,
@@ -82,23 +91,6 @@ def _normalize_df_for_json(df: pd.DataFrame) -> pd.DataFrame:
     return df.applymap(_clean_value_for_json)
 
 
-def _safe_json_dumps(payload: Dict) -> str:
-    """Serialize dict to strict JSON (no NaN). Fallback to string for unknown types."""
-    try:
-        return json.dumps(payload, allow_nan=False)
-    except (TypeError, ValueError):
-        # Convert any remaining non-JSON-serializable objects to strings
-        def fix(v):
-            v = _clean_value_for_json(v)
-            try:
-                json.dumps(v, allow_nan=False)
-                return v
-            except (TypeError, ValueError):
-                return str(v)
-        fixed = {k: fix(v) for k, v in payload.items()}
-        return json.dumps(fixed, allow_nan=False)
-
-
 def insert_dataframe(engine: Engine, table_name: str, df: pd.DataFrame, default_source: Optional[str] = None) -> None:
     """Insert a dataframe into the given table serializing each row to JSONB.
 
@@ -118,32 +110,25 @@ def insert_dataframe(engine: Engine, table_name: str, df: pd.DataFrame, default_
 
     records = []
     for _, row in df.iterrows():
-        payload = row.drop("source_file").to_dict()
-        payload_json = _safe_json_dumps(payload)
-        records.append({"source_file": row["source_file"], "data": payload_json})
+        # Convert to dict and clean each value individually
+        payload = {}
+        for col, val in row.drop("source_file").items():
+            payload[col] = _clean_value_for_json(val)
+        records.append({"source_file": row["source_file"], "data": payload})
 
     with engine.begin() as conn:
         conn.execute(TABLES[table_name].insert(), records)
 
 
-CSV_FILE_MAP = {
-    "new_businesses_consolidated.csv": "new_businesses",
-    "accounts_closed_consolidated.csv": "accounts_closed",
-    "accounts_relief_consolidated.csv": "accounts_relief",
-    "accounts_no_relief_consolidated.csv": "accounts_no_relief",
-}
 
 
-def load_from_csv_dir(engine: Engine, csv_dir: str, only_tables: Optional[list] = None) -> None:
+
+def load_from_csv_dir(engine: Engine, csv_dir: str) -> None:
     """Load CSV files from a directory into corresponding tables.
-
     - csv_dir: directory containing consolidated CSV files
-    - only_tables: optional list of table names to limit loading
     """
     csv_dir = os.path.abspath(csv_dir)
     for filename, table_name in CSV_FILE_MAP.items():
-        if only_tables and table_name not in only_tables:
-            continue
         path = os.path.join(csv_dir, filename)
         if not os.path.exists(path):
             continue
@@ -154,23 +139,14 @@ def load_from_csv_dir(engine: Engine, csv_dir: str, only_tables: Optional[list] 
 
 if __name__ == "__main__":
     import argparse
-    import pickle
 
     parser = argparse.ArgumentParser(description="Create tables and load data into Postgres.")
     parser.add_argument("--truncate", action="store_true", help="Truncate tables before inserting data")
     parser.add_argument(
-        "--pickle-path",
-        help="Path to a pickle file containing a dict of {table_name: dataframe} exported from the notebook.",
-    )
-    parser.add_argument(
         "--csv-dir",
         help="Path to directory containing consolidated CSV files to load.",
     )
-    parser.add_argument(
-        "--tables",
-        nargs="*",
-        help="Optional list of table names to load (defaults to all known tables).",
-    )
+  
     args = parser.parse_args()
 
     engine = get_engine()
@@ -179,16 +155,9 @@ if __name__ == "__main__":
     if args.truncate:
         truncate_tables(engine)
 
-    if args.pickle_path:
-        with open(args.pickle_path, "rb") as fh:
-            data: Dict[str, pd.DataFrame] = pickle.load(fh)
-        for table, df in data.items():
-            if args.tables and table not in args.tables:
-                continue
-            print(f"Inserting {len(df)} rows into {table}…")
-            insert_dataframe(engine, table, df)
-        print("✅ Data loaded successfully from pickle.")
 
     if args.csv_dir:
-        load_from_csv_dir(engine, args.csv_dir, args.tables)
+        load_from_csv_dir(engine, args.csv_dir)
         print("✅ Data loaded successfully from CSV directory.")
+    
+

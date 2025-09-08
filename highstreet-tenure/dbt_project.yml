@@ -5,16 +5,13 @@ config-version: 2
 
 profile: "highstreet_local"
 
-defaults:
-  model:
-    +materialized: view
-
 # Define model paths – you can add staging, marts etc. later
 model-paths: ["models"]
 
 models:
   highstreet_tenure:
     +schema: analytics  # use a dedicated schema to avoid cluttering public
+    +materialized: view
     staging:
       +materialized: view
     marts:
