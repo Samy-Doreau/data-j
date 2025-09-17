@@ -6,6 +6,7 @@ library(tidygeocoder)
 library(geosphere)
 library(leaflet)
 library(sf)
+library(timevis)
 
 db <- "highstreet"
 db_host <- "127.0.0.1"
@@ -34,6 +35,12 @@ server <- function(input, output, session) {
   
   conn <- get_connection()
   all_locations_df<- dbGetQuery(conn, "SELECT property_address, longitude, latitude from analytics_analytics.addresses_geocoded limit 10;")
+  businesses_tenures_df <- dbGetQuery(conn,"SELECT business_name, tenure_start_date, tenure_end_date from analytics_analytics.business_tenures")
+  businesses_df <- businesses_tenures_df %>% 
+    select('business_name') %>% 
+    distinct() %>% 
+    rename('value'='business_name') %>% 
+    mutate(label = value)
   
   filtered_locations_df = reactive({
 
@@ -52,4 +59,6 @@ server <- function(input, output, session) {
       setView(lng = ST_ABLANS_CENTER_COORDS[1], lat = ST_ABLANS_CENTER_COORDS[2], zoom = 13) %>% 
       addCircleMarkers(data =filtered_locations_df(), radius = 5 , lng = ~ longitude, lat = ~latitude)
   })
+  
+  updateSelectizeInput(session,'businessNameInput', choices = businesses_df, server = TRUE)
 }

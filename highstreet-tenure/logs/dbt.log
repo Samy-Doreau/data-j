@@ -25271,3 +25271,508 @@ drop table if exists "highstreet"."analytics_analytics"."business_timeline__dbt_
 [0m15:46:06.346271 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1204829b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x121c43e80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x120772a40>]}
 [0m15:46:06.346520 [debug] [MainThread]: Flushing usage events
 [0m15:46:06.782479 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:56:23.102035 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1100828f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1120c0d30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1120c0610>]}
+
+
+============================== 15:56:23.105498 | 72025c0e-f7ab-46f8-a14f-eef24e38ec2e ==============================
+[0m15:56:23.105498 [info ] [MainThread]: Running with dbt=1.10.11
+[0m15:56:23.105860 [debug] [MainThread]: running dbt with arguments {'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'partial_parse': 'True', 'invocation_command': 'dbt run -m business_tenures', 'write_json': 'True', 'static_parser': 'True', 'log_path': '/Users/samydoreau/data-j/highstreet-tenure/logs', 'introspect': 'True', 'log_cache_events': 'False', 'use_colors': 'True', 'target_path': 'None', 'indirect_selection': 'eager', 'no_print': 'None', 'version_check': 'True', 'warn_error': 'None', 'log_format': 'default', 'quiet': 'False', 'empty': 'False', 'debug': 'False', 'profiles_dir': '/Users/samydoreau/data-j/highstreet-tenure', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'fail_fast': 'False', 'cache_selected_only': 'False', 'printer_width': '80'}
+[0m15:56:23.106171 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+Usage of `--models`, `--model`, and `-m` is deprecated in favor of `--select` or
+`-s`.
+[0m15:56:23.106394 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '72025c0e-f7ab-46f8-a14f-eef24e38ec2e', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11200eb30>]}
+[0m15:56:23.275599 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '72025c0e-f7ab-46f8-a14f-eef24e38ec2e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112053e80>]}
+[0m15:56:23.317586 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '72025c0e-f7ab-46f8-a14f-eef24e38ec2e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11200feb0>]}
+[0m15:56:23.318317 [info ] [MainThread]: Registered adapter: postgres=1.9.0
+[0m15:56:23.384241 [debug] [MainThread]: checksum: 5335e1629744fab92fa7809c625edbb36f0d7063a879d6215c971798f27e66f9, vars: {}, profile: , target: , version: 1.10.11
+[0m15:56:23.459534 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 1 files changed.
+[0m15:56:23.459936 [debug] [MainThread]: Partial parsing: added file: highstreet_tenure://models/int/business_tenures.sql
+[0m15:56:23.460168 [debug] [MainThread]: Partial parsing: updated file: highstreet_tenure://models/int/business_timeline.sql
+[0m15:56:23.645117 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.highstreet_tenure.marts
+[0m15:56:23.653153 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '72025c0e-f7ab-46f8-a14f-eef24e38ec2e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11382c4c0>]}
+[0m15:56:23.697855 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/samydoreau/data-j/highstreet-tenure/target/manifest.json
+[0m15:56:23.699569 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/samydoreau/data-j/highstreet-tenure/target/semantic_manifest.json
+[0m15:56:23.712827 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '72025c0e-f7ab-46f8-a14f-eef24e38ec2e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112ffbd00>]}
+[0m15:56:23.713149 [info ] [MainThread]: Found 12 models, 5 sources, 434 macros
+[0m15:56:23.713351 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '72025c0e-f7ab-46f8-a14f-eef24e38ec2e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10722c5e0>]}
+[0m15:56:23.714099 [info ] [MainThread]: 
+[0m15:56:23.714304 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m15:56:23.714533 [info ] [MainThread]: 
+[0m15:56:23.714842 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m15:56:23.715344 [debug] [ThreadPool]: Acquiring new postgres connection 'list_highstreet'
+[0m15:56:23.748839 [debug] [ThreadPool]: Using postgres connection "list_highstreet"
+[0m15:56:23.749122 [debug] [ThreadPool]: On list_highstreet: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "connection_name": "list_highstreet"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m15:56:23.749298 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m15:56:23.875350 [debug] [ThreadPool]: SQL status: SELECT 8 in 0.126 seconds
+[0m15:56:23.876201 [debug] [ThreadPool]: On list_highstreet: Close
+[0m15:56:23.879301 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_highstreet, now list_highstreet_analytics_analytics)
+[0m15:56:23.882761 [debug] [ThreadPool]: Using postgres connection "list_highstreet_analytics_analytics"
+[0m15:56:23.882978 [debug] [ThreadPool]: On list_highstreet_analytics_analytics: BEGIN
+[0m15:56:23.883149 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m15:56:23.936274 [debug] [ThreadPool]: SQL status: BEGIN in 0.053 seconds
+[0m15:56:23.936631 [debug] [ThreadPool]: Using postgres connection "list_highstreet_analytics_analytics"
+[0m15:56:23.936836 [debug] [ThreadPool]: On list_highstreet_analytics_analytics: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "connection_name": "list_highstreet_analytics_analytics"} */
+select
+      'highstreet' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'analytics_analytics'
+    union all
+    select
+      'highstreet' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'analytics_analytics'
+    union all
+    select
+      'highstreet' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'analytics_analytics'
+  
+[0m15:56:24.000763 [debug] [ThreadPool]: SQL status: SELECT 12 in 0.064 seconds
+[0m15:56:24.001714 [debug] [ThreadPool]: On list_highstreet_analytics_analytics: ROLLBACK
+[0m15:56:24.003244 [debug] [ThreadPool]: On list_highstreet_analytics_analytics: Close
+[0m15:56:24.007025 [debug] [MainThread]: Using postgres connection "master"
+[0m15:56:24.007242 [debug] [MainThread]: On master: BEGIN
+[0m15:56:24.007413 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m15:56:24.058919 [debug] [MainThread]: SQL status: BEGIN in 0.051 seconds
+[0m15:56:24.060039 [debug] [MainThread]: Using postgres connection "master"
+[0m15:56:24.061027 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v', 'm')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m15:56:24.511121 [debug] [MainThread]: SQL status: SELECT 0 in 0.449 seconds
+[0m15:56:24.514373 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '72025c0e-f7ab-46f8-a14f-eef24e38ec2e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112051a50>]}
+[0m15:56:24.515536 [debug] [MainThread]: On master: ROLLBACK
+[0m15:56:24.518095 [debug] [MainThread]: Using postgres connection "master"
+[0m15:56:24.518344 [debug] [MainThread]: On master: BEGIN
+[0m15:56:24.519628 [debug] [MainThread]: SQL status: BEGIN in 0.001 seconds
+[0m15:56:24.519827 [debug] [MainThread]: On master: COMMIT
+[0m15:56:24.519999 [debug] [MainThread]: Using postgres connection "master"
+[0m15:56:24.520160 [debug] [MainThread]: On master: COMMIT
+[0m15:56:24.520873 [debug] [MainThread]: SQL status: COMMIT in 0.001 seconds
+[0m15:56:24.521105 [debug] [MainThread]: On master: Close
+[0m15:56:24.522755 [debug] [Thread-1 (]: Began running node model.highstreet_tenure.business_tenures
+[0m15:56:24.523091 [info ] [Thread-1 (]: 1 of 1 START sql table model analytics_analytics.business_tenures .............. [RUN]
+[0m15:56:24.523372 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_highstreet_analytics_analytics, now model.highstreet_tenure.business_tenures)
+[0m15:56:24.523583 [debug] [Thread-1 (]: Began compiling node model.highstreet_tenure.business_tenures
+[0m15:56:24.528202 [debug] [Thread-1 (]: Writing injected SQL for node "model.highstreet_tenure.business_tenures"
+[0m15:56:24.528739 [debug] [Thread-1 (]: Began executing node model.highstreet_tenure.business_tenures
+[0m15:56:24.551336 [debug] [Thread-1 (]: Writing runtime sql for node "model.highstreet_tenure.business_tenures"
+[0m15:56:24.552011 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_tenures"
+[0m15:56:24.552240 [debug] [Thread-1 (]: On model.highstreet_tenure.business_tenures: BEGIN
+[0m15:56:24.552436 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m15:56:24.606417 [debug] [Thread-1 (]: SQL status: BEGIN in 0.054 seconds
+[0m15:56:24.606770 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_tenures"
+[0m15:56:24.606997 [debug] [Thread-1 (]: On model.highstreet_tenure.business_tenures: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_tenures"} */
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."business_tenures__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with business_timeline as (
+    select * from "highstreet"."analytics_analytics"."business_timeline"
+),
+
+business_tenures as (
+    select 
+        business_name, 
+        min(event_date) as tenure_start_date,
+        max(event_date) as tenure_end_date
+    from business_timeline
+    group by 1
+)
+
+select * from business_tenures
+  );
+  
+[0m15:56:24.842670 [debug] [Thread-1 (]: SQL status: SELECT 6223 in 0.235 seconds
+[0m15:56:24.852768 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_tenures"
+[0m15:56:24.853140 [debug] [Thread-1 (]: On model.highstreet_tenure.business_tenures: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_tenures"} */
+alter table "highstreet"."analytics_analytics"."business_tenures__dbt_tmp" rename to "business_tenures"
+[0m15:56:24.856256 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m15:56:24.864815 [debug] [Thread-1 (]: On model.highstreet_tenure.business_tenures: COMMIT
+[0m15:56:24.865247 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_tenures"
+[0m15:56:24.865536 [debug] [Thread-1 (]: On model.highstreet_tenure.business_tenures: COMMIT
+[0m15:56:24.874527 [debug] [Thread-1 (]: SQL status: COMMIT in 0.009 seconds
+[0m15:56:24.878734 [debug] [Thread-1 (]: Applying DROP to: "highstreet"."analytics_analytics"."business_tenures__dbt_backup"
+[0m15:56:24.881306 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_tenures"
+[0m15:56:24.881601 [debug] [Thread-1 (]: On model.highstreet_tenure.business_tenures: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_tenures"} */
+drop table if exists "highstreet"."analytics_analytics"."business_tenures__dbt_backup" cascade
+[0m15:56:24.883978 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.002 seconds
+[0m15:56:24.885818 [debug] [Thread-1 (]: On model.highstreet_tenure.business_tenures: Close
+[0m15:56:24.887093 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '72025c0e-f7ab-46f8-a14f-eef24e38ec2e', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113d4e5f0>]}
+[0m15:56:24.887616 [info ] [Thread-1 (]: 1 of 1 OK created sql table model analytics_analytics.business_tenures ......... [[32mSELECT 6223[0m in 0.36s]
+[0m15:56:24.888063 [debug] [Thread-1 (]: Finished running node model.highstreet_tenure.business_tenures
+[0m15:56:24.888818 [debug] [MainThread]: Using postgres connection "master"
+[0m15:56:24.889097 [debug] [MainThread]: On master: BEGIN
+[0m15:56:24.889277 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m15:56:24.944518 [debug] [MainThread]: SQL status: BEGIN in 0.055 seconds
+[0m15:56:24.944911 [debug] [MainThread]: On master: COMMIT
+[0m15:56:24.945106 [debug] [MainThread]: Using postgres connection "master"
+[0m15:56:24.945278 [debug] [MainThread]: On master: COMMIT
+[0m15:56:24.946226 [debug] [MainThread]: SQL status: COMMIT in 0.001 seconds
+[0m15:56:24.946533 [debug] [MainThread]: On master: Close
+[0m15:56:24.946805 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m15:56:24.946974 [debug] [MainThread]: Connection 'model.highstreet_tenure.business_tenures' was properly closed.
+[0m15:56:24.947156 [info ] [MainThread]: 
+[0m15:56:24.947336 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 1.23 seconds (1.23s).
+[0m15:56:24.947689 [debug] [MainThread]: Command end result
+[0m15:56:24.962298 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/samydoreau/data-j/highstreet-tenure/target/manifest.json
+[0m15:56:24.966513 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/samydoreau/data-j/highstreet-tenure/target/semantic_manifest.json
+[0m15:56:24.971484 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/samydoreau/data-j/highstreet-tenure/target/run_results.json
+[0m15:56:24.971764 [info ] [MainThread]: 
+[0m15:56:24.972058 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m15:56:24.972276 [info ] [MainThread]: 
+[0m15:56:24.972481 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m15:56:24.972801 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ModelParamUsageDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m15:56:24.975128 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 1.9258282, "process_in_blocks": "0", "process_kernel_time": 0.218107, "process_mem_max_rss": "133873664", "process_out_blocks": "0", "process_user_time": 1.367829}
+[0m15:56:24.975516 [debug] [MainThread]: Command `dbt run` succeeded at 15:56:24.975467 after 1.93 seconds
+[0m15:56:24.975746 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1100828f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x113857b50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112053e80>]}
+[0m15:56:24.975964 [debug] [MainThread]: Flushing usage events
+[0m15:56:25.435278 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:38:04.164667 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1059f2890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107074be0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1070744c0>]}
+
+
+============================== 17:38:04.168045 | 94328ed2-8476-4805-992f-056633354027 ==============================
+[0m17:38:04.168045 [info ] [MainThread]: Running with dbt=1.10.11
+[0m17:38:04.168441 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'static_parser': 'True', 'write_json': 'True', 'fail_fast': 'False', 'partial_parse': 'True', 'profiles_dir': '/Users/samydoreau/data-j/highstreet-tenure', 'no_print': 'None', 'use_experimental_parser': 'False', 'send_anonymous_usage_stats': 'True', 'log_path': '/Users/samydoreau/data-j/highstreet-tenure/logs', 'printer_width': '80', 'debug': 'False', 'use_colors': 'True', 'quiet': 'False', 'empty': 'False', 'invocation_command': 'dbt run -m business_addresses', 'log_format': 'default', 'indirect_selection': 'eager', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_cache_events': 'False', 'introspect': 'True', 'warn_error': 'None', 'target_path': 'None', 'cache_selected_only': 'False'}
+[0m17:38:04.168760 [warn ] [MainThread]: [[33mWARNING[0m]: Deprecated functionality
+Usage of `--models`, `--model`, and `-m` is deprecated in favor of `--select` or
+`-s`.
+[0m17:38:04.168978 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '94328ed2-8476-4805-992f-056633354027', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106fc1660>]}
+[0m17:38:04.561218 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '94328ed2-8476-4805-992f-056633354027', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107024ee0>]}
+[0m17:38:04.605310 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '94328ed2-8476-4805-992f-056633354027', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10719a1d0>]}
+[0m17:38:04.606119 [info ] [MainThread]: Registered adapter: postgres=1.9.0
+[0m17:38:04.673378 [debug] [MainThread]: checksum: 5335e1629744fab92fa7809c625edbb36f0d7063a879d6215c971798f27e66f9, vars: {}, profile: , target: , version: 1.10.11
+[0m17:38:04.751085 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 1 files added, 0 files changed.
+[0m17:38:04.751508 [debug] [MainThread]: Partial parsing: added file: highstreet_tenure://models/int/business_addresses.sql
+[0m17:38:04.934873 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 1 unused configuration paths:
+- models.highstreet_tenure.marts
+[0m17:38:04.943009 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '94328ed2-8476-4805-992f-056633354027', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107e98ee0>]}
+[0m17:38:04.989492 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/samydoreau/data-j/highstreet-tenure/target/manifest.json
+[0m17:38:04.991218 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/samydoreau/data-j/highstreet-tenure/target/semantic_manifest.json
+[0m17:38:05.004593 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '94328ed2-8476-4805-992f-056633354027', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107e51870>]}
+[0m17:38:05.004925 [info ] [MainThread]: Found 13 models, 5 sources, 434 macros
+[0m17:38:05.005130 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '94328ed2-8476-4805-992f-056633354027', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107e51e10>]}
+[0m17:38:05.006020 [info ] [MainThread]: 
+[0m17:38:05.006271 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:38:05.006453 [info ] [MainThread]: 
+[0m17:38:05.006750 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m17:38:05.007259 [debug] [ThreadPool]: Acquiring new postgres connection 'list_highstreet'
+[0m17:38:05.041236 [debug] [ThreadPool]: Using postgres connection "list_highstreet"
+[0m17:38:05.041564 [debug] [ThreadPool]: On list_highstreet: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "connection_name": "list_highstreet"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m17:38:05.041748 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:38:05.178491 [debug] [ThreadPool]: SQL status: SELECT 8 in 0.137 seconds
+[0m17:38:05.179403 [debug] [ThreadPool]: On list_highstreet: Close
+[0m17:38:05.182550 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_highstreet, now list_highstreet_analytics_analytics)
+[0m17:38:05.186078 [debug] [ThreadPool]: Using postgres connection "list_highstreet_analytics_analytics"
+[0m17:38:05.186330 [debug] [ThreadPool]: On list_highstreet_analytics_analytics: BEGIN
+[0m17:38:05.186500 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:38:05.263157 [debug] [ThreadPool]: SQL status: BEGIN in 0.077 seconds
+[0m17:38:05.263471 [debug] [ThreadPool]: Using postgres connection "list_highstreet_analytics_analytics"
+[0m17:38:05.263679 [debug] [ThreadPool]: On list_highstreet_analytics_analytics: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "connection_name": "list_highstreet_analytics_analytics"} */
+select
+      'highstreet' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'analytics_analytics'
+    union all
+    select
+      'highstreet' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'analytics_analytics'
+    union all
+    select
+      'highstreet' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'analytics_analytics'
+  
+[0m17:38:05.338656 [debug] [ThreadPool]: SQL status: SELECT 13 in 0.075 seconds
+[0m17:38:05.343940 [debug] [ThreadPool]: On list_highstreet_analytics_analytics: ROLLBACK
+[0m17:38:05.345887 [debug] [ThreadPool]: On list_highstreet_analytics_analytics: Close
+[0m17:38:05.350003 [debug] [MainThread]: Using postgres connection "master"
+[0m17:38:05.350232 [debug] [MainThread]: On master: BEGIN
+[0m17:38:05.350400 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:38:05.407020 [debug] [MainThread]: SQL status: BEGIN in 0.056 seconds
+[0m17:38:05.408390 [debug] [MainThread]: Using postgres connection "master"
+[0m17:38:05.411253 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v', 'm')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m17:38:05.868696 [debug] [MainThread]: SQL status: SELECT 0 in 0.456 seconds
+[0m17:38:05.871589 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '94328ed2-8476-4805-992f-056633354027', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107efeaa0>]}
+[0m17:38:05.872602 [debug] [MainThread]: On master: ROLLBACK
+[0m17:38:05.874599 [debug] [MainThread]: Using postgres connection "master"
+[0m17:38:05.874885 [debug] [MainThread]: On master: BEGIN
+[0m17:38:05.876566 [debug] [MainThread]: SQL status: BEGIN in 0.001 seconds
+[0m17:38:05.877384 [debug] [MainThread]: On master: COMMIT
+[0m17:38:05.877870 [debug] [MainThread]: Using postgres connection "master"
+[0m17:38:05.878334 [debug] [MainThread]: On master: COMMIT
+[0m17:38:05.879453 [debug] [MainThread]: SQL status: COMMIT in 0.001 seconds
+[0m17:38:05.879968 [debug] [MainThread]: On master: Close
+[0m17:38:05.883624 [debug] [Thread-1 (]: Began running node model.highstreet_tenure.business_addresses
+[0m17:38:05.884003 [info ] [Thread-1 (]: 1 of 1 START sql table model analytics_analytics.business_addresses ............ [RUN]
+[0m17:38:05.884308 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_highstreet_analytics_analytics, now model.highstreet_tenure.business_addresses)
+[0m17:38:05.884531 [debug] [Thread-1 (]: Began compiling node model.highstreet_tenure.business_addresses
+[0m17:38:05.889769 [debug] [Thread-1 (]: Writing injected SQL for node "model.highstreet_tenure.business_addresses"
+[0m17:38:05.890334 [debug] [Thread-1 (]: Began executing node model.highstreet_tenure.business_addresses
+[0m17:38:05.912303 [debug] [Thread-1 (]: Writing runtime sql for node "model.highstreet_tenure.business_addresses"
+[0m17:38:05.913043 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_addresses"
+[0m17:38:05.913295 [debug] [Thread-1 (]: On model.highstreet_tenure.business_addresses: BEGIN
+[0m17:38:05.913529 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:38:05.966046 [debug] [Thread-1 (]: SQL status: BEGIN in 0.052 seconds
+[0m17:38:05.966415 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_addresses"
+[0m17:38:05.966695 [debug] [Thread-1 (]: On model.highstreet_tenure.business_addresses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_addresses"} */
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."business_addresses__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with business_addresses_new as (
+    select distinct full_property_address as business_address, primary_liable_party_name as business_name from "highstreet"."analytics_analytics"."stg_new_businesses"
+
+),
+
+business_addresses_accounts_no_relief as (
+    select distinct full_property_address as business_address, primary_liable_party_name as business_name from "highstreet"."analytics_analytics"."stg_accounts_no_relief"
+
+),
+
+business_addresses_accounts_relief as (
+    select distinct full_property_address as business_address, primary_liable_party_name as business_name from "highstreet"."analytics_analytics"."stg_accounts_relief"
+
+),
+
+business_addresses_accounts_closed as (
+    select distinct full_property_address as business_address, primary_liable_party_name as business_name from "highstreet"."analytics_analytics"."stg_accounts_closed"
+
+),
+
+combined_business_addresses as (
+
+    select * from business_addresses_new
+    union 
+    select * from business_addresses_accounts_no_relief
+    union 
+    select * from business_addresses_accounts_relief
+    union 
+    select * from business_addresses_accounts_closed
+)
+
+select distinct business_name, business_address from combined_business_addresses
+  );
+  
+[0m17:38:06.348278 [debug] [Thread-1 (]: SQL status: SELECT 11450 in 0.381 seconds
+[0m17:38:06.364259 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_addresses"
+[0m17:38:06.365111 [debug] [Thread-1 (]: On model.highstreet_tenure.business_addresses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_addresses"} */
+alter table "highstreet"."analytics_analytics"."business_addresses__dbt_tmp" rename to "business_addresses"
+[0m17:38:06.369134 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.004 seconds
+[0m17:38:06.377008 [debug] [Thread-1 (]: On model.highstreet_tenure.business_addresses: COMMIT
+[0m17:38:06.377273 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_addresses"
+[0m17:38:06.377492 [debug] [Thread-1 (]: On model.highstreet_tenure.business_addresses: COMMIT
+[0m17:38:06.390930 [debug] [Thread-1 (]: SQL status: COMMIT in 0.013 seconds
+[0m17:38:06.394859 [debug] [Thread-1 (]: Applying DROP to: "highstreet"."analytics_analytics"."business_addresses__dbt_backup"
+[0m17:38:06.397741 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_addresses"
+[0m17:38:06.398041 [debug] [Thread-1 (]: On model.highstreet_tenure.business_addresses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_addresses"} */
+drop table if exists "highstreet"."analytics_analytics"."business_addresses__dbt_backup" cascade
+[0m17:38:06.400195 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.002 seconds
+[0m17:38:06.401748 [debug] [Thread-1 (]: On model.highstreet_tenure.business_addresses: Close
+[0m17:38:06.403026 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '94328ed2-8476-4805-992f-056633354027', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1082cea10>]}
+[0m17:38:06.403580 [info ] [Thread-1 (]: 1 of 1 OK created sql table model analytics_analytics.business_addresses ....... [[32mSELECT 11450[0m in 0.52s]
+[0m17:38:06.403941 [debug] [Thread-1 (]: Finished running node model.highstreet_tenure.business_addresses
+[0m17:38:06.404683 [debug] [MainThread]: Using postgres connection "master"
+[0m17:38:06.404863 [debug] [MainThread]: On master: BEGIN
+[0m17:38:06.405012 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m17:38:06.460347 [debug] [MainThread]: SQL status: BEGIN in 0.055 seconds
+[0m17:38:06.460706 [debug] [MainThread]: On master: COMMIT
+[0m17:38:06.460890 [debug] [MainThread]: Using postgres connection "master"
+[0m17:38:06.461053 [debug] [MainThread]: On master: COMMIT
+[0m17:38:06.461954 [debug] [MainThread]: SQL status: COMMIT in 0.001 seconds
+[0m17:38:06.462270 [debug] [MainThread]: On master: Close
+[0m17:38:06.462545 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:38:06.462701 [debug] [MainThread]: Connection 'model.highstreet_tenure.business_addresses' was properly closed.
+[0m17:38:06.462870 [info ] [MainThread]: 
+[0m17:38:06.463051 [info ] [MainThread]: Finished running 1 table model in 0 hours 0 minutes and 1.46 seconds (1.46s).
+[0m17:38:06.463397 [debug] [MainThread]: Command end result
+[0m17:38:06.478190 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/samydoreau/data-j/highstreet-tenure/target/manifest.json
+[0m17:38:06.479440 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/samydoreau/data-j/highstreet-tenure/target/semantic_manifest.json
+[0m17:38:06.483399 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/samydoreau/data-j/highstreet-tenure/target/run_results.json
+[0m17:38:06.483667 [info ] [MainThread]: 
+[0m17:38:06.483944 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:38:06.484120 [info ] [MainThread]: 
+[0m17:38:06.484393 [info ] [MainThread]: Done. PASS=1 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=1
+[0m17:38:06.484897 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- ModelParamUsageDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m17:38:06.508231 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 2.3980668, "process_in_blocks": "0", "process_kernel_time": 0.233213, "process_mem_max_rss": "136462336", "process_out_blocks": "0", "process_user_time": 1.42414}
+[0m17:38:06.508950 [debug] [MainThread]: Command `dbt run` succeeded at 17:38:06.508839 after 2.40 seconds
+[0m17:38:06.509312 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1059f2890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105d0bc10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107ebfa90>]}
+[0m17:38:06.509645 [debug] [MainThread]: Flushing usage events
+[0m17:38:06.922240 [debug] [MainThread]: An error was encountered while trying to flush usage events
