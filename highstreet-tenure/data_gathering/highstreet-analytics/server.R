@@ -36,7 +36,10 @@ server <- function(input, output, session) {
   conn <- get_connection()
   all_locations_df<- dbGetQuery(conn, "SELECT property_address, longitude, latitude from analytics_analytics.addresses_geocoded limit 10;")
   businesses_tenures_df <- dbGetQuery(conn,"SELECT business_name, tenure_start_date, tenure_end_date from analytics_analytics.business_tenures")
-  businesses_df <- businesses_tenures_df %>% 
+  business_addresses_df <- dbGetQuery(conn, "SELECT business_name, business_address from analytics_analytics.business_addresses") %>% 
+    inner_join(all_locations_df, by = c('business_address' = 'property_address'))
+  
+  businesses_df <- business_addresses_df %>% 
     select('business_name') %>% 
     distinct() %>% 
     rename('value'='business_name') %>% 
@@ -44,12 +47,23 @@ server <- function(input, output, session) {
   
   filtered_locations_df = reactive({
 
-    all_locations_df%>% 
-      rowwise() %>% 
-      mutate(dist_to_center = distHaversine(c(longitude, latitude),ST_ABLANS_CENTER_COORDS)) %>% 
-      filter(dist_to_center <= input$distance_to_center[2] && dist_to_center >= input$distance_to_center[1])
-    
+    business_addresses_df%>%
+      filter(business_name %in% input$businessNameInput)
+      # rowwise() %>% 
+      # mutate(dist_to_center = distHaversine(c(longitude, latitude),ST_ABLANS_CENTER_COORDS)) %>% 
+      # filter(dist_to_center <= input$distance_to_center[2] && dist_to_center >= input$distance_to_center[1])
+      
   }) 
+  
+  filtered_business_tenures_df = reactive({
+    businesses_tenures_df %>% 
+      filter(business_name %in% input$businessNameInput) %>% 
+      rename('content' = 'business_name') %>% 
+      rename('start' = 'tenure_start_date') %>% 
+      rename('end' = 'tenure_end_date') %>% 
+      mutate(id = row_number())
+  })
+  
   
   output$propertiesTable <- renderDataTable(filtered_locations_df())
   
@@ -57,8 +71,11 @@ server <- function(input, output, session) {
     leaflet() %>% 
       addTiles() %>% 
       setView(lng = ST_ABLANS_CENTER_COORDS[1], lat = ST_ABLANS_CENTER_COORDS[2], zoom = 13) %>% 
-      addCircleMarkers(data =filtered_locations_df(), radius = 5 , lng = ~ longitude, lat = ~latitude)
+      addCircleMarkers(data =filtered_locations_df(), radius = 5 , lng = ~ longitude, lat = ~latitude) %>% 
+      addMarkers(~longitude, ~latitude, label = ~business_name)
+    
   })
   
   updateSelectizeInput(session,'businessNameInput', choices = businesses_df, server = TRUE)
+  output$businessTenureTimeline <- renderTimevis(timevis(filtered_business_tenures_df()))
 }
