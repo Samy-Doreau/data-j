@@ -59,6 +59,7 @@ combined_accounts as (
 )
 
 select 
-    *, 
+    business_name, event_date, event_type, source_file_name,
+    concat('https://www.stalbans.gov.uk/sites/default/files/attachments/', source_file_name) as source_file_url,
     to_char(event_date::date, 'YYYYMM')::int as year_month_key 
 from combined_accounts order by business_name, event_date

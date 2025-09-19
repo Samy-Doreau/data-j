@@ -1,4 +1,14 @@
-{{ config(materialized='table') }}
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."business_timeline__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
 
 with account_ends as (
     select distinct
@@ -9,7 +19,7 @@ with account_ends as (
         'account_end' as event_type,
         property_reference_number as property_id,
         source_file as source_file_name
-    from {{ ref('stg_accounts_closed') }}
+    from "highstreet"."analytics_analytics"."stg_accounts_closed"
 ),
 
 accounts_new as (
@@ -21,7 +31,7 @@ accounts_new as (
         'account_start' as event_type,
         property_reference_number as property_id,
         source_file as source_file_name
-    from {{ ref('stg_new_businesses') }}
+    from "highstreet"."analytics_analytics"."stg_new_businesses"
 ),
 
 accounts_no_relief_active as (
@@ -33,7 +43,7 @@ accounts_no_relief_active as (
         'account_active' as event_type,
         property_reference_number as property_id,
         source_file as source_file_name
-    from {{ ref('stg_accounts_no_relief') }}
+    from "highstreet"."analytics_analytics"."stg_accounts_no_relief"
 ),
 
 accounts_relief_active as (
@@ -45,7 +55,7 @@ accounts_relief_active as (
         'account_active' as event_type,
         property_reference_number as property_id,
         source_file as source_file_name
-    from {{ ref('stg_accounts_relief') }}
+    from "highstreet"."analytics_analytics"."stg_accounts_relief"
 ),
 
 combined_accounts as (
@@ -59,6 +69,9 @@ combined_accounts as (
 )
 
 select 
-    *, 
+    business_name, event_date, event_type, source_file_name,
+    concat('https://www.stalbans.gov.uk/sites/default/files/attachments/', source_file_name) as source_file_url,
     to_char(event_date::date, 'YYYYMM')::int as year_month_key 
 from combined_accounts order by business_name, event_date
+  );
+  

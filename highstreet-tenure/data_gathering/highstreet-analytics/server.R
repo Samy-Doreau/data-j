@@ -34,10 +34,12 @@ get_connection <- function() {
 server <- function(input, output, session) {
   
   conn <- get_connection()
-  all_locations_df<- dbGetQuery(conn, "SELECT property_address, longitude, latitude from analytics_analytics.addresses_geocoded limit 10;")
+  all_locations_df<- dbGetQuery(conn, "SELECT property_address, longitude, latitude from analytics_analytics.addresses_geocoded;")
   businesses_tenures_df <- dbGetQuery(conn,"SELECT business_name, tenure_start_date, tenure_end_date from analytics_analytics.business_tenures")
+  businesses_timelines_df <- dbGetQuery(conn, "SELECT business_name, event_date, event_type,source_file_name,source_file_url, year_month_key from analytics_analytics.business_timeline;")
   business_addresses_df <- dbGetQuery(conn, "SELECT business_name, business_address from analytics_analytics.business_addresses") %>% 
-    inner_join(all_locations_df, by = c('business_address' = 'property_address'))
+    inner_join(all_locations_df, by = c('business_address' = 'property_address')) %>% 
+    mutate(latitude = as.numeric(latitude),longitude = as.numeric(longitude))
   
   businesses_df <- business_addresses_df %>% 
     select('business_name') %>% 
@@ -53,7 +55,20 @@ server <- function(input, output, session) {
       # mutate(dist_to_center = distHaversine(c(longitude, latitude),ST_ABLANS_CENTER_COORDS)) %>% 
       # filter(dist_to_center <= input$distance_to_center[2] && dist_to_center >= input$distance_to_center[1])
       
-  }) 
+  })
+  
+  filtered_business_timelines_df = reactive({
+    businesses_timelines_df %>% 
+      filter(business_name %in% input$businessNameInput) %>% 
+      mutate(
+        source_file_link = sprintf(
+          '<a href="%s" target="_blank">%s</a>',
+          source_file_url,
+          htmltools::htmlEscape(source_file_name)
+        )
+      ) %>% 
+      select(-c('source_file_name','source_file_url'))
+  })
   
   filtered_business_tenures_df = reactive({
     businesses_tenures_df %>% 
@@ -66,14 +81,13 @@ server <- function(input, output, session) {
   
   
   output$propertiesTable <- renderDataTable(filtered_locations_df())
+  output$businessesTimelineDetails <- renderDataTable(filtered_business_timelines_df(),escape = FALSE)
   
   output$locationsMap <- renderLeaflet({
     leaflet() %>% 
       addTiles() %>% 
       setView(lng = ST_ABLANS_CENTER_COORDS[1], lat = ST_ABLANS_CENTER_COORDS[2], zoom = 13) %>% 
-      addCircleMarkers(data =filtered_locations_df(), radius = 5 , lng = ~ longitude, lat = ~latitude) %>% 
-      addMarkers(~longitude, ~latitude, label = ~business_name)
-    
+      addCircleMarkers(data =filtered_locations_df(), radius = 5 , lng = ~ longitude, lat = ~latitude,popup = ~business_name)
   })
   
   updateSelectizeInput(session,'businessNameInput', choices = businesses_df, server = TRUE)

@@ -16,7 +16,8 @@ fluidPage(
       mainPanel = mainPanel(
         # dataTableOutput('propertiesTable'),
         leafletOutput(outputId = 'locationsMap'),
-        timevisOutput(outputId = 'businessTenureTimeline')
+        timevisOutput(outputId = 'businessTenureTimeline'),
+        dataTableOutput('businessesTimelineDetails')
       )
     )
     

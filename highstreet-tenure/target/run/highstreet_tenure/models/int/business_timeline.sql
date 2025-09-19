@@ -68,6 +68,9 @@ combined_accounts as (
     select distinct business_name, event_date, event_type, source_file_name from accounts_relief_active
 )
 
-select *, to_char(event_date::date, 'YYYYMM')::int as year_month_key from combined_accounts order by business_name, event_date
+select 
+    *, 
+    to_char(event_date::date, 'YYYYMM')::int as year_month_key 
+from combined_accounts order by business_name, event_date
   );
   
