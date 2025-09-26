@@ -13,4 +13,9 @@ business_tenures as (
     group by 1
 )
 
-select * from business_tenures
+select 
+    business_name,
+    tenure_start_date,
+    tenure_end_date,
+    round((tenure_end_date::date - tenure_start_date::date)/365.25,1) as tenure_duration_years
+from business_tenures

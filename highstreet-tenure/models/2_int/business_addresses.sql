@@ -31,4 +31,16 @@ combined_business_addresses as (
     select * from business_addresses_accounts_closed
 )
 
-select distinct business_name, business_address from combined_business_addresses
+select distinct 
+    business_name, business_address,
+    split_part(business_address, ',', -1) as postcode
+from combined_business_addresses
+-- where lower(business_address) like '%st peters street%' 
+-- or lower(business_address) like '%market place%'
+-- or lower(business_address) like '%french row%'
+-- or lower(business_address) like '%checker st%'
+-- or lower(business_address) like '%george st%'
+-- or lower(business_address) like '%holywell hill%'
+-- or lower(business_address) like '%london r%'
+-- or lower(business_address) like '%victoria st%'
+-- or lower(business_address) like '%hatfield r%'
