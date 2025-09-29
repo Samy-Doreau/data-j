@@ -32,7 +32,8 @@ combined_business_addresses as (
 )
 
 select distinct 
-    business_name, business_address,
+     {{ normalize_business_name('business_name') }} as business_name,
+    business_address,
     split_part(business_address, ',', -1) as postcode
 from combined_business_addresses
 -- where lower(business_address) like '%st peters street%' 
