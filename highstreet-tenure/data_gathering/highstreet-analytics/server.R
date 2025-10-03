@@ -9,6 +9,7 @@ library(sf)
 library(timevis)
 library(RColorBrewer)
 library(stringdist)
+library(glue)
 
 db <- "highstreet"
 db_host <- "127.0.0.1"
@@ -39,20 +40,12 @@ queries <- list(
 	    agg.business_address, agg.postcode, agg.postcode_three_letter, agg.tenant_count ,addr.latitude, addr.longitude
       from analytics_analytics.addresses_with_most_tenants agg
       inner join analytics_analytics.addresses_geocoded addr on addr.property_address = agg.business_address",
-  business_tenures = "SELECT 
-    bt.business_name, bt.tenure_start_date, bt.tenure_end_date,
-    ba.postcode
-    from analytics_analytics.business_tenures bt
-    inner join analytics_analytics.business_addresses ba
-    on bt.business_name = ba.business_name;",
-  business_timelines = "SELECT 
-      bt.business_name, bt.event_date, bt.event_type,source_file_name,bt.source_file_url, bt.year_month_key,
-      ba.postcode
-    from analytics_analytics.business_timeline bt
-    inner join analytics_analytics.business_addresses ba
-    on bt.business_name = ba.business_name;",
   business_addresses = "SELECT business_name, business_address, postcode from analytics_analytics.business_addresses",
-  business_address_tenures = "SELECT business_name,business_address,tenure_start_date,tenure_end_date,tenure_duration_years FROM analytics_analytics.business_address_tenures"
+  business_address_tenures = "SELECT 
+  business_name,business_address,tenure_start_date,tenure_end_date,tenure_duration_years 
+  FROM analytics_analytics.business_address_tenures",
+  business_address_timelines = "SELECT business_name, business_address,event_date, event_type, source_file_name, source_file_url 
+  from analytics_analytics.business_address_timeline"
 )
 
 
@@ -63,15 +56,9 @@ server <- function(input, output, session) {
   conn <- get_connection()
   all_locations_df<- dbGetQuery(conn, queries$all_locations)
   addresses_with_most_tenants_df <- dbGetQuery(conn,queries$addresses_with_most_tenants)
-  
-  businesses_tenures_df <- dbGetQuery(conn,queries$business_tenures) %>% 
-    mutate(postcode_three_letter = substr(postcode, 1,4))
-  
   business_address_tenures_df <- dbGetQuery(conn, queries$business_address_tenures)
+  business_address_timelines_df <- dbGetQuery(conn, queries$business_address_timelines)
  
-  businesses_timelines_df <- dbGetQuery(conn, queries$business_timelines) %>% 
-    mutate(postcode_three_letter = substr(postcode, 1,4))
-  
   business_addresses_df <- dbGetQuery(conn, queries$business_addresses) %>% 
     inner_join(all_locations_df, by = c('business_address' = 'property_address')) %>% 
     mutate(latitude = as.numeric(latitude),longitude = as.numeric(longitude)) %>% 
@@ -93,37 +80,19 @@ server <- function(input, output, session) {
     rename('value'='postcode_three_letter') %>% 
     mutate(label = value)
   
-  
-  
-  filtered_locations_df = reactive({
-
-    addresses_with_most_tenants_df%>%
-      # filter(business_name %in% input$businessNameInput)
-      filter(postcode_three_letter %in% input$postcodeInput)
-      # rowwise() %>% 
-      # mutate(dist_to_center = distHaversine(c(longitude, latitude),ST_ABLANS_CENTER_COORDS)) %>% 
-      # filter(dist_to_center <= input$distance_to_center[2] && dist_to_center >= input$distance_to_center[1])
+  filtered_locations_df <- reactive({
+    df <- addresses_with_most_tenants_df
     
-      
+    if (!is.null(input$postcodeInput) && length(input$postcodeInput) > 0) {
+      df <- df %>% filter(postcode_three_letter %in% input$postcodeInput)
+    }
+    
+    df
+  
   })
+  
   
   pal <- colorNumeric(palette = c("green", "red"), domain = addresses_with_most_tenants_df$tenant_count)
-  
-  filtered_business_timelines_df = reactive({
-    businesses_timelines_df %>% 
-      # filter(business_name %in% input$businessNameInput) %>% 
-      filter(postcode_three_letter %in% input$postcodeInput) %>% 
-      mutate(
-        source_file_link = sprintf(
-          '<a href="%s" target="_blank">%s</a>',
-          source_file_url,
-          htmltools::htmlEscape(source_file_name)
-        )
-      ) %>% 
-      select(-c('source_file_name','source_file_url'))
-  })
-  
-  
   observeEvent(input$locationsMap_shape_click, {
     
     click <- input$locationsMap_shape_click
@@ -143,9 +112,36 @@ server <- function(input, output, session) {
     }
   })
   
+  observeEvent(input$businessAddressTenureTimeline_selected, {
+    sel_id <- input$businessAddressTenureTimeline_selected
+    
+    if (length(sel_id) > 0) {
   
-  # output$propertiesTable <- renderDataTable(filtered_locations_df())
-  output$businessesTimelineDetails <- renderDataTable(filtered_business_timelines_df(),escape = FALSE)
+      selected_df <- filtered_business_addresses_tenures_df() %>%
+        filter(id == sel_id)
+      
+      
+      if (nrow(selected_df) > 0) {
+        selected_business_name <- selected_df[["content"]][1]
+        output$tenureDetails <- renderDataTable({
+          business_address_timelines_df %>% 
+            filter(business_name == selected_business_name) %>% 
+            mutate(
+                    source_file_link = sprintf(
+                      '<a href="%s" target="_blank">%s</a>',
+                      source_file_url,
+                      htmltools::htmlEscape(source_file_name)
+                    )
+                  ) %>%
+            select(-c('source_file_name','source_file_url'))
+        }, escape = FALSE)
+      } else {
+        output$tenureDetails <- renderTable({ data.frame() })
+      }
+    }
+  })
+  
+  
   
   output$locationsMap <- renderLeaflet({
     df <- filtered_locations_df() %>%
@@ -178,17 +174,23 @@ server <- function(input, output, session) {
         fillOpacity = 0.8,
         radius = ~tenant_count * 3,   # scale radius by tenant count
         layerId = ~business_address
-      ) %>%
-      addLegend(
-        pal = pal,
-        values = df$tenant_count,
-        title = "Tenant count",
-        opacity = 1
-      )
+      ) 
+      # addLegend(
+      #   pal = pal,
+      #   values = df$tenant_count,
+      #   title = "Tenant count",
+      #   opacity = 1
+      # )
   })
   
   
   updateSelectizeInput(session,'businessNameInput', choices = businesses_df, server = TRUE)
   updateSelectInput(session, 'postcodeInput', choices = postcodes_df)
-  output$businessAddressTenureTimeline <- renderTimevis(timevis(filtered_business_addresses_tenures_df()))
+  output$businessAddressTenureTimeline <- renderTimevis({
+    df <- filtered_business_addresses_tenures_df()
+    if (is.null(df) || nrow(df) == 0) {
+      df <- data.frame(id = character(), content = character(), start = character())
+    }
+    timevis(df)
+  })
 }

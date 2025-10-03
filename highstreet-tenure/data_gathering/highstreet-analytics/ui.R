@@ -11,14 +11,14 @@ fluidPage(
     sidebarLayout(
       sidebarPanel = sidebarPanel(
         # sliderInput('distance_to_center','Distance to town center (m)', min = 100, max = 1500, value = c(150,500)),
-        selectizeInput('businessNameInput',"Business Name", choices=NULL, selected='AL2', options = list(maxItems = 4)),
-        selectInput('postcodeInput', 'Postcode',choices = NULL, selected = NULL)
+        # selectizeInput('businessNameInput',"Business Name", choices=NULL, selected='AL2', options = list(maxItems = 4)),
+        selectInput('postcodeInput', 'Postcode',choices = NULL, selected = "AL1")
       ),
       mainPanel = mainPanel(
         # dataTableOutput('propertiesTable'),
         leafletOutput(outputId = 'locationsMap'),
-        timevisOutput(outputId = 'businessAddressTenureTimeline')
-        # dataTableOutput('businessesTimelineDetails')
+        timevisOutput(outputId = 'businessAddressTenureTimeline'),
+        dataTableOutput('tenureDetails')
       )
     )
     
