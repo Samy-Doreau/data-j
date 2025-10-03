@@ -42881,3 +42881,1359 @@ drop table if exists "highstreet"."analytics_analytics"."business_address_tenure
 [0m18:34:01.790765 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10553e8c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11d897eb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11d896080>]}
 [0m18:34:01.790988 [debug] [MainThread]: Flushing usage events
 [0m18:34:02.263919 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m17:09:37.938883 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105b02920>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107179510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107178df0>]}
+
+
+============================== 17:09:37.941881 | 5a6fd105-09fb-45bf-8417-143f38b2ade8 ==============================
+[0m17:09:37.941881 [info ] [MainThread]: Running with dbt=1.10.11
+[0m17:09:37.942244 [debug] [MainThread]: running dbt with arguments {'profiles_dir': '/Users/samydoreau/data-j/highstreet-tenure', 'use_experimental_parser': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'quiet': 'False', 'no_print': 'None', 'log_path': '/Users/samydoreau/data-j/highstreet-tenure/logs', 'send_anonymous_usage_stats': 'True', 'debug': 'False', 'fail_fast': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'version_check': 'True', 'empty': 'False', 'log_cache_events': 'False', 'target_path': 'None', 'log_format': 'default', 'use_colors': 'True', 'static_parser': 'True', 'indirect_selection': 'eager', 'invocation_command': 'dbt run', 'printer_width': '80', 'write_json': 'True', 'warn_error': 'None'}
+[0m17:09:38.107083 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107135840>]}
+[0m17:09:38.150174 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107248e80>]}
+[0m17:09:38.150965 [info ] [MainThread]: Registered adapter: postgres=1.9.0
+[0m17:09:38.217236 [debug] [MainThread]: checksum: 5335e1629744fab92fa7809c625edbb36f0d7063a879d6215c971798f27e66f9, vars: {}, profile: , target: , version: 1.10.11
+[0m17:09:38.296308 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m17:09:38.296759 [debug] [MainThread]: Partial parsing: updated file: highstreet_tenure://models/2_int/businesses.sql
+[0m17:09:38.491973 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 2 unused configuration paths:
+- models.highstreet_tenure.marts
+- models.highstreet_tenure.staging
+[0m17:09:38.500186 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108048130>]}
+[0m17:09:38.547582 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/samydoreau/data-j/highstreet-tenure/target/manifest.json
+[0m17:09:38.549137 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/samydoreau/data-j/highstreet-tenure/target/semantic_manifest.json
+[0m17:09:38.561783 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107e306d0>]}
+[0m17:09:38.562129 [info ] [MainThread]: Found 13 models, 5 sources, 435 macros
+[0m17:09:38.562331 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107e32b90>]}
+[0m17:09:38.563407 [info ] [MainThread]: 
+[0m17:09:38.563618 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m17:09:38.563791 [info ] [MainThread]: 
+[0m17:09:38.564401 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m17:09:38.567096 [debug] [ThreadPool]: Acquiring new postgres connection 'list_highstreet'
+[0m17:09:38.601243 [debug] [ThreadPool]: Using postgres connection "list_highstreet"
+[0m17:09:38.601628 [debug] [ThreadPool]: On list_highstreet: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "connection_name": "list_highstreet"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m17:09:38.601865 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m17:09:38.724761 [debug] [ThreadPool]: SQL status: SELECT 8 in 0.123 seconds
+[0m17:09:38.725798 [debug] [ThreadPool]: On list_highstreet: Close
+[0m17:09:38.727252 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_highstreet, now list_highstreet_analytics_analytics)
+[0m17:09:38.731202 [debug] [ThreadPool]: Using postgres connection "list_highstreet_analytics_analytics"
+[0m17:09:38.731497 [debug] [ThreadPool]: On list_highstreet_analytics_analytics: BEGIN
+[0m17:09:38.731691 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m17:09:38.786336 [debug] [ThreadPool]: SQL status: BEGIN in 0.055 seconds
+[0m17:09:38.786691 [debug] [ThreadPool]: Using postgres connection "list_highstreet_analytics_analytics"
+[0m17:09:38.786899 [debug] [ThreadPool]: On list_highstreet_analytics_analytics: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "connection_name": "list_highstreet_analytics_analytics"} */
+select
+      'highstreet' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'analytics_analytics'
+    union all
+    select
+      'highstreet' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'analytics_analytics'
+    union all
+    select
+      'highstreet' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'analytics_analytics'
+  
+[0m17:09:38.859694 [debug] [ThreadPool]: SQL status: SELECT 14 in 0.073 seconds
+[0m17:09:38.860678 [debug] [ThreadPool]: On list_highstreet_analytics_analytics: ROLLBACK
+[0m17:09:38.862115 [debug] [ThreadPool]: On list_highstreet_analytics_analytics: Close
+[0m17:09:38.866618 [debug] [MainThread]: Using postgres connection "master"
+[0m17:09:38.866865 [debug] [MainThread]: On master: BEGIN
+[0m17:09:38.867029 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m17:09:38.921853 [debug] [MainThread]: SQL status: BEGIN in 0.055 seconds
+[0m17:09:38.922209 [debug] [MainThread]: Using postgres connection "master"
+[0m17:09:38.922450 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v', 'm')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m17:09:39.371956 [debug] [MainThread]: SQL status: SELECT 1 in 0.449 seconds
+[0m17:09:39.375813 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107e1d7b0>]}
+[0m17:09:39.376469 [debug] [MainThread]: On master: ROLLBACK
+[0m17:09:39.378120 [debug] [MainThread]: Using postgres connection "master"
+[0m17:09:39.378780 [debug] [MainThread]: On master: BEGIN
+[0m17:09:39.380468 [debug] [MainThread]: SQL status: BEGIN in 0.001 seconds
+[0m17:09:39.380965 [debug] [MainThread]: On master: COMMIT
+[0m17:09:39.381440 [debug] [MainThread]: Using postgres connection "master"
+[0m17:09:39.381934 [debug] [MainThread]: On master: COMMIT
+[0m17:09:39.383188 [debug] [MainThread]: SQL status: COMMIT in 0.001 seconds
+[0m17:09:39.383801 [debug] [MainThread]: On master: Close
+[0m17:09:39.387561 [debug] [Thread-1 (]: Began running node model.highstreet_tenure.date_spine
+[0m17:09:39.387971 [info ] [Thread-1 (]: 1 of 13 START sql table model analytics_analytics.date_spine ................... [RUN]
+[0m17:09:39.388310 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_highstreet_analytics_analytics, now model.highstreet_tenure.date_spine)
+[0m17:09:39.388542 [debug] [Thread-1 (]: Began compiling node model.highstreet_tenure.date_spine
+[0m17:09:39.393315 [debug] [Thread-1 (]: Writing injected SQL for node "model.highstreet_tenure.date_spine"
+[0m17:09:39.393684 [debug] [Thread-2 (]: Began running node model.highstreet_tenure.stg_filemap
+[0m17:09:39.394145 [info ] [Thread-2 (]: 2 of 13 START sql table model analytics_analytics.stg_filemap .................. [RUN]
+[0m17:09:39.394770 [debug] [Thread-2 (]: Acquiring new postgres connection 'model.highstreet_tenure.stg_filemap'
+[0m17:09:39.395062 [debug] [Thread-1 (]: Began executing node model.highstreet_tenure.date_spine
+[0m17:09:39.395319 [debug] [Thread-2 (]: Began compiling node model.highstreet_tenure.stg_filemap
+[0m17:09:39.418143 [debug] [Thread-1 (]: Writing runtime sql for node "model.highstreet_tenure.date_spine"
+[0m17:09:39.420725 [debug] [Thread-2 (]: Writing injected SQL for node "model.highstreet_tenure.stg_filemap"
+[0m17:09:39.421553 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.date_spine"
+[0m17:09:39.421978 [debug] [Thread-1 (]: On model.highstreet_tenure.date_spine: BEGIN
+[0m17:09:39.422285 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:09:39.422655 [debug] [Thread-2 (]: Began executing node model.highstreet_tenure.stg_filemap
+[0m17:09:39.425854 [debug] [Thread-2 (]: Writing runtime sql for node "model.highstreet_tenure.stg_filemap"
+[0m17:09:39.426418 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.stg_filemap"
+[0m17:09:39.426638 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_filemap: BEGIN
+[0m17:09:39.426832 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m17:09:39.473065 [debug] [Thread-1 (]: SQL status: BEGIN in 0.051 seconds
+[0m17:09:39.473443 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.date_spine"
+[0m17:09:39.473670 [debug] [Thread-1 (]: On model.highstreet_tenure.date_spine: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.date_spine"} */
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."date_spine__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with date_spine as (
+    select 
+        ('1991-01-01'::date + interval '1 month' * (row_number() over (order by null) - 1))::date as date_month
+    from generate_series(1, 432)  -- 432 months from Jan 1991 to Dec 2026
+)
+
+select 
+    date_month,
+    to_char(date_month, 'YYYYMM') as year_month_key,
+    to_char(date_month, 'Mon-YYYY') as formatted_month_year,
+    extract(year from date_month) as year,
+    extract(month from date_month) as month,
+    to_char(date_month, 'Month') as month_name,
+    to_char(date_month, 'Mon') as month_abbr
+from date_spine
+order by date_month
+  );
+  
+[0m17:09:39.475046 [debug] [Thread-2 (]: SQL status: BEGIN in 0.048 seconds
+[0m17:09:39.475258 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.stg_filemap"
+[0m17:09:39.475469 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_filemap: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_filemap"} */
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."stg_filemap__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with source as (
+    select * from "highstreet"."public"."filename_mapping"
+),
+
+extracted as (
+    select
+        id,
+        source_file,
+        loaded_at,
+        -- Extract fields from the JSON data column
+        data->>'file_name' as file_name,
+        data->>'table_name' as table_name,
+        data->>'valid_from' as valid_from,
+        data->>'valid_to' as valid_to
+    from source
+)
+
+select * from extracted
+  );
+  
+[0m17:09:39.533030 [debug] [Thread-2 (]: SQL status: SELECT 45 in 0.057 seconds
+[0m17:09:39.538969 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.stg_filemap"
+[0m17:09:39.539260 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_filemap: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_filemap"} */
+alter table "highstreet"."analytics_analytics"."stg_filemap" rename to "stg_filemap__dbt_backup"
+[0m17:09:39.543511 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.004 seconds
+[0m17:09:39.545493 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.stg_filemap"
+[0m17:09:39.545762 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_filemap: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_filemap"} */
+alter table "highstreet"."analytics_analytics"."stg_filemap__dbt_tmp" rename to "stg_filemap"
+[0m17:09:39.548134 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m17:09:39.556668 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_filemap: COMMIT
+[0m17:09:39.557048 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.stg_filemap"
+[0m17:09:39.557363 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_filemap: COMMIT
+[0m17:09:39.557916 [debug] [Thread-1 (]: SQL status: SELECT 432 in 0.084 seconds
+[0m17:09:39.560104 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.date_spine"
+[0m17:09:39.560343 [debug] [Thread-1 (]: On model.highstreet_tenure.date_spine: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.date_spine"} */
+alter table "highstreet"."analytics_analytics"."date_spine" rename to "date_spine__dbt_backup"
+[0m17:09:39.560736 [debug] [Thread-2 (]: SQL status: COMMIT in 0.003 seconds
+[0m17:09:39.564175 [debug] [Thread-2 (]: Applying DROP to: "highstreet"."analytics_analytics"."stg_filemap__dbt_backup"
+[0m17:09:39.564432 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.004 seconds
+[0m17:09:39.566638 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.stg_filemap"
+[0m17:09:39.568539 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.date_spine"
+[0m17:09:39.568941 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_filemap: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_filemap"} */
+drop table if exists "highstreet"."analytics_analytics"."stg_filemap__dbt_backup" cascade
+[0m17:09:39.569291 [debug] [Thread-1 (]: On model.highstreet_tenure.date_spine: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.date_spine"} */
+alter table "highstreet"."analytics_analytics"."date_spine__dbt_tmp" rename to "date_spine"
+[0m17:09:39.571031 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m17:09:39.571815 [debug] [Thread-1 (]: On model.highstreet_tenure.date_spine: COMMIT
+[0m17:09:39.572047 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.date_spine"
+[0m17:09:39.572242 [debug] [Thread-1 (]: On model.highstreet_tenure.date_spine: COMMIT
+[0m17:09:39.575307 [debug] [Thread-1 (]: SQL status: COMMIT in 0.003 seconds
+[0m17:09:39.577504 [debug] [Thread-1 (]: Applying DROP to: "highstreet"."analytics_analytics"."date_spine__dbt_backup"
+[0m17:09:39.577872 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.date_spine"
+[0m17:09:39.578079 [debug] [Thread-1 (]: On model.highstreet_tenure.date_spine: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.date_spine"} */
+drop table if exists "highstreet"."analytics_analytics"."date_spine__dbt_backup" cascade
+[0m17:09:39.581856 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.012 seconds
+[0m17:09:39.583380 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_filemap: Close
+[0m17:09:39.584656 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10490b490>]}
+[0m17:09:39.585095 [info ] [Thread-2 (]: 2 of 13 OK created sql table model analytics_analytics.stg_filemap ............. [[32mSELECT 45[0m in 0.19s]
+[0m17:09:39.585432 [debug] [Thread-2 (]: Finished running node model.highstreet_tenure.stg_filemap
+[0m17:09:39.585826 [debug] [Thread-4 (]: Began running node model.highstreet_tenure.stg_accounts_closed
+[0m17:09:39.586045 [debug] [Thread-3 (]: Began running node model.highstreet_tenure.stg_accounts_no_relief
+[0m17:09:39.586242 [debug] [Thread-2 (]: Began running node model.highstreet_tenure.stg_accounts_relief
+[0m17:09:39.586512 [info ] [Thread-4 (]: 3 of 13 START sql table model analytics_analytics.stg_accounts_closed .......... [RUN]
+[0m17:09:39.586834 [info ] [Thread-3 (]: 4 of 13 START sql table model analytics_analytics.stg_accounts_no_relief ....... [RUN]
+[0m17:09:39.587436 [debug] [Thread-4 (]: Acquiring new postgres connection 'model.highstreet_tenure.stg_accounts_closed'
+[0m17:09:39.587147 [info ] [Thread-2 (]: 5 of 13 START sql table model analytics_analytics.stg_accounts_relief .......... [RUN]
+[0m17:09:39.587752 [debug] [Thread-3 (]: Acquiring new postgres connection 'model.highstreet_tenure.stg_accounts_no_relief'
+[0m17:09:39.587967 [debug] [Thread-4 (]: Began compiling node model.highstreet_tenure.stg_accounts_closed
+[0m17:09:39.588192 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.highstreet_tenure.stg_filemap, now model.highstreet_tenure.stg_accounts_relief)
+[0m17:09:39.588428 [debug] [Thread-3 (]: Began compiling node model.highstreet_tenure.stg_accounts_no_relief
+[0m17:09:39.590508 [debug] [Thread-4 (]: Writing injected SQL for node "model.highstreet_tenure.stg_accounts_closed"
+[0m17:09:39.590733 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.012 seconds
+[0m17:09:39.590968 [debug] [Thread-2 (]: Began compiling node model.highstreet_tenure.stg_accounts_relief
+[0m17:09:39.593194 [debug] [Thread-3 (]: Writing injected SQL for node "model.highstreet_tenure.stg_accounts_no_relief"
+[0m17:09:39.594346 [debug] [Thread-1 (]: On model.highstreet_tenure.date_spine: Close
+[0m17:09:39.596546 [debug] [Thread-2 (]: Writing injected SQL for node "model.highstreet_tenure.stg_accounts_relief"
+[0m17:09:39.596975 [debug] [Thread-4 (]: Began executing node model.highstreet_tenure.stg_accounts_closed
+[0m17:09:39.597515 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1084f5120>]}
+[0m17:09:39.597766 [debug] [Thread-3 (]: Began executing node model.highstreet_tenure.stg_accounts_no_relief
+[0m17:09:39.600182 [debug] [Thread-4 (]: Writing runtime sql for node "model.highstreet_tenure.stg_accounts_closed"
+[0m17:09:39.600747 [info ] [Thread-1 (]: 1 of 13 OK created sql table model analytics_analytics.date_spine .............. [[32mSELECT 432[0m in 0.21s]
+[0m17:09:39.601099 [debug] [Thread-2 (]: Began executing node model.highstreet_tenure.stg_accounts_relief
+[0m17:09:39.603256 [debug] [Thread-3 (]: Writing runtime sql for node "model.highstreet_tenure.stg_accounts_no_relief"
+[0m17:09:39.603668 [debug] [Thread-1 (]: Finished running node model.highstreet_tenure.date_spine
+[0m17:09:39.605589 [debug] [Thread-2 (]: Writing runtime sql for node "model.highstreet_tenure.stg_accounts_relief"
+[0m17:09:39.605988 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_closed"
+[0m17:09:39.606285 [debug] [Thread-1 (]: Began running node model.highstreet_tenure.stg_new_businesses
+[0m17:09:39.606651 [debug] [Thread-3 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_no_relief"
+[0m17:09:39.607034 [debug] [Thread-4 (]: On model.highstreet_tenure.stg_accounts_closed: BEGIN
+[0m17:09:39.607624 [info ] [Thread-1 (]: 6 of 13 START sql table model analytics_analytics.stg_new_businesses ........... [RUN]
+[0m17:09:39.608072 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_relief"
+[0m17:09:39.608326 [debug] [Thread-3 (]: On model.highstreet_tenure.stg_accounts_no_relief: BEGIN
+[0m17:09:39.608587 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m17:09:39.609840 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.highstreet_tenure.date_spine, now model.highstreet_tenure.stg_new_businesses)
+[0m17:09:39.610095 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_accounts_relief: BEGIN
+[0m17:09:39.610315 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m17:09:39.610627 [debug] [Thread-1 (]: Began compiling node model.highstreet_tenure.stg_new_businesses
+[0m17:09:39.610830 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:09:39.613359 [debug] [Thread-1 (]: Writing injected SQL for node "model.highstreet_tenure.stg_new_businesses"
+[0m17:09:39.614026 [debug] [Thread-1 (]: Began executing node model.highstreet_tenure.stg_new_businesses
+[0m17:09:39.616677 [debug] [Thread-1 (]: Writing runtime sql for node "model.highstreet_tenure.stg_new_businesses"
+[0m17:09:39.617915 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.stg_new_businesses"
+[0m17:09:39.618235 [debug] [Thread-1 (]: On model.highstreet_tenure.stg_new_businesses: BEGIN
+[0m17:09:39.618452 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:09:39.667902 [debug] [Thread-3 (]: SQL status: BEGIN in 0.058 seconds
+[0m17:09:39.668281 [debug] [Thread-4 (]: SQL status: BEGIN in 0.060 seconds
+[0m17:09:39.668590 [debug] [Thread-1 (]: SQL status: BEGIN in 0.050 seconds
+[0m17:09:39.668885 [debug] [Thread-3 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_no_relief"
+[0m17:09:39.669102 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_closed"
+[0m17:09:39.669317 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.stg_new_businesses"
+[0m17:09:39.669619 [debug] [Thread-3 (]: On model.highstreet_tenure.stg_accounts_no_relief: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_accounts_no_relief"} */
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."stg_accounts_no_relief__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with source as (
+    select * from "highstreet"."public"."accounts_no_relief"
+),
+
+filemap as (
+    select file_name, valid_from, valid_to from "highstreet"."analytics_analytics"."stg_filemap"
+    where table_name = 'accounts_no_relief'
+),
+
+extracted as (
+    select
+        source.id,
+        source_file,
+        loaded_at,
+        -- Extract fields from the JSON data column
+        data->>'billing_period' as billing_period,
+        data->>'full_property_address' as full_property_address,
+        (data->>'current_rateable_value')::numeric as current_rateable_value,
+        data->>'primary_liable_party_name' as primary_liable_party_name,
+        data->>'property_reference_number' as property_reference_number,
+        (data->>'a_c_summary_current_liability')::numeric as a_c_summary_current_liability,
+        data->>'liable_responsibility_start_date' as liable_responsibility_start_date,
+        filemap.valid_from as valid_from,
+        filemap.valid_to as valid_to
+    from source
+    left join filemap on source.source_file = filemap.file_name
+)
+
+select * from extracted
+  );
+  
+[0m17:09:39.669923 [debug] [Thread-4 (]: On model.highstreet_tenure.stg_accounts_closed: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_accounts_closed"} */
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."stg_accounts_closed__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with source as (
+    select * from "highstreet"."public"."accounts_closed"
+),
+
+filemap as (
+    select file_name, valid_from, valid_to from "highstreet"."analytics_analytics"."stg_filemap"
+    where table_name = 'accounts_closed'
+),
+
+extracted as (
+    select
+        source.id,
+        source.source_file,
+        source.loaded_at,
+        -- Extract fields from the JSON data column
+        data->>'account_start_date' as account_start_date,
+        data->>'account_end_date' as account_end_date,
+        (data->>'outstanding_debt')::numeric as outstanding_debt,
+        data->>'full_property_address' as full_property_address,
+        data->>'primary_liable_party_name' as primary_liable_party_name,
+        data->>'property_reference_number' as property_reference_number,
+        filemap.valid_from as valid_from,
+        filemap.valid_to as valid_to
+    from source
+    left join filemap on source.source_file = filemap.file_name
+)
+
+select * from extracted
+  );
+  
+[0m17:09:39.670199 [debug] [Thread-1 (]: On model.highstreet_tenure.stg_new_businesses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_new_businesses"} */
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."stg_new_businesses__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with source as (
+    select * from "highstreet"."public"."new_businesses"
+),
+
+filemap as (
+    select file_name, valid_from, valid_to from "highstreet"."analytics_analytics"."stg_filemap"
+    where table_name = 'new_businesses'
+),
+
+extracted as (
+    select
+        source.id,
+        source_file,
+        loaded_at,
+        -- Extract fields from the JSON data column
+        data->>'current_analysis_code_description' as current_analysis_code_description,
+        data->>'primary_liable_party_name' as primary_liable_party_name,
+        data->>'full_property_address' as full_property_address,
+        data->>'liable_responsibility_start_date' as liable_responsibility_start_date,
+        (data->>'current_rateable_value')::numeric as current_rateable_value,
+        data->>'property_reference_number' as property_reference_number,
+        filemap.valid_from as valid_from,
+        filemap.valid_to as valid_to
+    from source
+    left join filemap on source.source_file = filemap.file_name
+)
+
+select * from extracted
+  );
+  
+[0m17:09:39.673476 [debug] [Thread-2 (]: SQL status: BEGIN in 0.063 seconds
+[0m17:09:39.673745 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_relief"
+[0m17:09:39.673989 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_accounts_relief: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_accounts_relief"} */
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."stg_accounts_relief__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with source as (
+    select * from "highstreet"."public"."accounts_relief"
+),
+
+filemap as (
+    select file_name, valid_from, valid_to from "highstreet"."analytics_analytics"."stg_filemap"
+    where table_name = 'accounts_with_relief'
+),
+
+extracted as (
+    select
+        source.id,
+        source_file,
+        loaded_at,
+        -- Extract fields from the JSON data column
+        data->>'current_relief_type' as current_relief_type,
+        data->>'full_property_address' as full_property_address,
+        (data->>'current_rateable_value')::numeric as current_rateable_value,
+        data->>'primary_liable_party_name' as primary_liable_party_name,
+        data->>'property_reference_number' as property_reference_number,
+        data->>'current_relief_award_start_date' as current_relief_award_start_date,
+        data->>'current_relief_type_description' as current_relief_type_description,
+        data->>'liable_responsibility_start_date' as liable_responsibility_start_date,
+        (data->>'current_relief_award_perc_awarded')::numeric as current_relief_award_perc_awarded,
+        filemap.valid_from as valid_from,
+        filemap.valid_to as valid_to
+    from source
+    left join filemap on source.source_file = filemap.file_name
+)
+
+select * from extracted
+  );
+  
+[0m17:09:39.784195 [debug] [Thread-1 (]: SQL status: SELECT 1307 in 0.114 seconds
+[0m17:09:39.786598 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.stg_new_businesses"
+[0m17:09:39.786944 [debug] [Thread-1 (]: On model.highstreet_tenure.stg_new_businesses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_new_businesses"} */
+alter table "highstreet"."analytics_analytics"."stg_new_businesses" rename to "stg_new_businesses__dbt_backup"
+[0m17:09:39.790712 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.004 seconds
+[0m17:09:39.792571 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.stg_new_businesses"
+[0m17:09:39.792827 [debug] [Thread-1 (]: On model.highstreet_tenure.stg_new_businesses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_new_businesses"} */
+alter table "highstreet"."analytics_analytics"."stg_new_businesses__dbt_tmp" rename to "stg_new_businesses"
+[0m17:09:39.795252 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m17:09:39.796153 [debug] [Thread-1 (]: On model.highstreet_tenure.stg_new_businesses: COMMIT
+[0m17:09:39.796403 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.stg_new_businesses"
+[0m17:09:39.796605 [debug] [Thread-1 (]: On model.highstreet_tenure.stg_new_businesses: COMMIT
+[0m17:09:39.804298 [debug] [Thread-1 (]: SQL status: COMMIT in 0.007 seconds
+[0m17:09:39.805822 [debug] [Thread-1 (]: Applying DROP to: "highstreet"."analytics_analytics"."stg_new_businesses__dbt_backup"
+[0m17:09:39.806164 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.stg_new_businesses"
+[0m17:09:39.806372 [debug] [Thread-1 (]: On model.highstreet_tenure.stg_new_businesses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_new_businesses"} */
+drop table if exists "highstreet"."analytics_analytics"."stg_new_businesses__dbt_backup" cascade
+[0m17:09:39.806976 [debug] [Thread-4 (]: SQL status: SELECT 2683 in 0.136 seconds
+[0m17:09:39.808856 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_closed"
+[0m17:09:39.809100 [debug] [Thread-4 (]: On model.highstreet_tenure.stg_accounts_closed: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_accounts_closed"} */
+alter table "highstreet"."analytics_analytics"."stg_accounts_closed" rename to "stg_accounts_closed__dbt_backup"
+[0m17:09:39.812993 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.004 seconds
+[0m17:09:39.815429 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_closed"
+[0m17:09:39.815720 [debug] [Thread-4 (]: On model.highstreet_tenure.stg_accounts_closed: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_accounts_closed"} */
+alter table "highstreet"."analytics_analytics"."stg_accounts_closed__dbt_tmp" rename to "stg_accounts_closed"
+[0m17:09:39.818209 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m17:09:39.819005 [debug] [Thread-4 (]: On model.highstreet_tenure.stg_accounts_closed: COMMIT
+[0m17:09:39.819295 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_closed"
+[0m17:09:39.819507 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.013 seconds
+[0m17:09:39.819722 [debug] [Thread-4 (]: On model.highstreet_tenure.stg_accounts_closed: COMMIT
+[0m17:09:39.820389 [debug] [Thread-1 (]: On model.highstreet_tenure.stg_new_businesses: Close
+[0m17:09:39.820793 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104c26bf0>]}
+[0m17:09:39.821182 [info ] [Thread-1 (]: 6 of 13 OK created sql table model analytics_analytics.stg_new_businesses ...... [[32mSELECT 1307[0m in 0.21s]
+[0m17:09:39.821501 [debug] [Thread-1 (]: Finished running node model.highstreet_tenure.stg_new_businesses
+[0m17:09:39.825313 [debug] [Thread-4 (]: SQL status: COMMIT in 0.005 seconds
+[0m17:09:39.826857 [debug] [Thread-4 (]: Applying DROP to: "highstreet"."analytics_analytics"."stg_accounts_closed__dbt_backup"
+[0m17:09:39.827200 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_closed"
+[0m17:09:39.827424 [debug] [Thread-4 (]: On model.highstreet_tenure.stg_accounts_closed: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_accounts_closed"} */
+drop table if exists "highstreet"."analytics_analytics"."stg_accounts_closed__dbt_backup" cascade
+[0m17:09:39.842203 [debug] [Thread-4 (]: SQL status: DROP TABLE in 0.015 seconds
+[0m17:09:39.843423 [debug] [Thread-4 (]: On model.highstreet_tenure.stg_accounts_closed: Close
+[0m17:09:39.843913 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10865ff10>]}
+[0m17:09:39.844332 [info ] [Thread-4 (]: 3 of 13 OK created sql table model analytics_analytics.stg_accounts_closed ..... [[32mSELECT 2683[0m in 0.26s]
+[0m17:09:39.844661 [debug] [Thread-4 (]: Finished running node model.highstreet_tenure.stg_accounts_closed
+[0m17:09:40.331714 [debug] [Thread-3 (]: SQL status: SELECT 27009 in 0.661 seconds
+[0m17:09:40.336917 [debug] [Thread-3 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_no_relief"
+[0m17:09:40.337246 [debug] [Thread-3 (]: On model.highstreet_tenure.stg_accounts_no_relief: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_accounts_no_relief"} */
+alter table "highstreet"."analytics_analytics"."stg_accounts_no_relief" rename to "stg_accounts_no_relief__dbt_backup"
+[0m17:09:40.343124 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.006 seconds
+[0m17:09:40.345024 [debug] [Thread-3 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_no_relief"
+[0m17:09:40.345262 [debug] [Thread-3 (]: On model.highstreet_tenure.stg_accounts_no_relief: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_accounts_no_relief"} */
+alter table "highstreet"."analytics_analytics"."stg_accounts_no_relief__dbt_tmp" rename to "stg_accounts_no_relief"
+[0m17:09:40.347082 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m17:09:40.347837 [debug] [Thread-3 (]: On model.highstreet_tenure.stg_accounts_no_relief: COMMIT
+[0m17:09:40.348059 [debug] [Thread-3 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_no_relief"
+[0m17:09:40.348246 [debug] [Thread-3 (]: On model.highstreet_tenure.stg_accounts_no_relief: COMMIT
+[0m17:09:40.358445 [debug] [Thread-3 (]: SQL status: COMMIT in 0.010 seconds
+[0m17:09:40.363448 [debug] [Thread-3 (]: Applying DROP to: "highstreet"."analytics_analytics"."stg_accounts_no_relief__dbt_backup"
+[0m17:09:40.363781 [debug] [Thread-2 (]: SQL status: SELECT 28209 in 0.690 seconds
+[0m17:09:40.364233 [debug] [Thread-3 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_no_relief"
+[0m17:09:40.368537 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_relief"
+[0m17:09:40.369122 [debug] [Thread-3 (]: On model.highstreet_tenure.stg_accounts_no_relief: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_accounts_no_relief"} */
+drop table if exists "highstreet"."analytics_analytics"."stg_accounts_no_relief__dbt_backup" cascade
+[0m17:09:40.369635 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_accounts_relief: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_accounts_relief"} */
+alter table "highstreet"."analytics_analytics"."stg_accounts_relief" rename to "stg_accounts_relief__dbt_backup"
+[0m17:09:40.375706 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.005 seconds
+[0m17:09:40.377627 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_relief"
+[0m17:09:40.377886 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_accounts_relief: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_accounts_relief"} */
+alter table "highstreet"."analytics_analytics"."stg_accounts_relief__dbt_tmp" rename to "stg_accounts_relief"
+[0m17:09:40.379826 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m17:09:40.380656 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_accounts_relief: COMMIT
+[0m17:09:40.380873 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_relief"
+[0m17:09:40.381061 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_accounts_relief: COMMIT
+[0m17:09:40.383525 [debug] [Thread-2 (]: SQL status: COMMIT in 0.002 seconds
+[0m17:09:40.385830 [debug] [Thread-2 (]: Applying DROP to: "highstreet"."analytics_analytics"."stg_accounts_relief__dbt_backup"
+[0m17:09:40.386168 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.stg_accounts_relief"
+[0m17:09:40.386381 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_accounts_relief: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.stg_accounts_relief"} */
+drop table if exists "highstreet"."analytics_analytics"."stg_accounts_relief__dbt_backup" cascade
+[0m17:09:40.391943 [debug] [Thread-3 (]: SQL status: DROP TABLE in 0.022 seconds
+[0m17:09:40.392788 [debug] [Thread-3 (]: On model.highstreet_tenure.stg_accounts_no_relief: Close
+[0m17:09:40.393168 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108698850>]}
+[0m17:09:40.393554 [info ] [Thread-3 (]: 4 of 13 OK created sql table model analytics_analytics.stg_accounts_no_relief .. [[32mSELECT 27009[0m in 0.81s]
+[0m17:09:40.393871 [debug] [Thread-3 (]: Finished running node model.highstreet_tenure.stg_accounts_no_relief
+[0m17:09:40.406296 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.020 seconds
+[0m17:09:40.407318 [debug] [Thread-2 (]: On model.highstreet_tenure.stg_accounts_relief: Close
+[0m17:09:40.407718 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1086b3fd0>]}
+[0m17:09:40.408099 [info ] [Thread-2 (]: 5 of 13 OK created sql table model analytics_analytics.stg_accounts_relief ..... [[32mSELECT 28209[0m in 0.82s]
+[0m17:09:40.408406 [debug] [Thread-2 (]: Finished running node model.highstreet_tenure.stg_accounts_relief
+[0m17:09:40.408949 [debug] [Thread-1 (]: Began running node model.highstreet_tenure.business_address_timeline
+[0m17:09:40.409348 [debug] [Thread-4 (]: Began running node model.highstreet_tenure.business_addresses
+[0m17:09:40.409695 [info ] [Thread-1 (]: 7 of 13 START sql table model analytics_analytics.business_address_timeline .... [RUN]
+[0m17:09:40.410126 [info ] [Thread-4 (]: 8 of 13 START sql table model analytics_analytics.business_addresses ........... [RUN]
+[0m17:09:40.410427 [debug] [Thread-3 (]: Began running node model.highstreet_tenure.businesses
+[0m17:09:40.410665 [debug] [Thread-2 (]: Began running node model.highstreet_tenure.properties
+[0m17:09:40.410931 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.highstreet_tenure.stg_new_businesses, now model.highstreet_tenure.business_address_timeline)
+[0m17:09:40.411155 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.highstreet_tenure.stg_accounts_closed, now model.highstreet_tenure.business_addresses)
+[0m17:09:40.411420 [info ] [Thread-3 (]: 9 of 13 START sql table model analytics_analytics.businesses ................... [RUN]
+[0m17:09:40.411706 [info ] [Thread-2 (]: 10 of 13 START sql table model analytics_analytics.properties .................. [RUN]
+[0m17:09:40.411960 [debug] [Thread-1 (]: Began compiling node model.highstreet_tenure.business_address_timeline
+[0m17:09:40.412158 [debug] [Thread-4 (]: Began compiling node model.highstreet_tenure.business_addresses
+[0m17:09:40.412374 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.highstreet_tenure.stg_accounts_no_relief, now model.highstreet_tenure.businesses)
+[0m17:09:40.412604 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.highstreet_tenure.stg_accounts_relief, now model.highstreet_tenure.properties)
+[0m17:09:40.415529 [debug] [Thread-1 (]: Writing injected SQL for node "model.highstreet_tenure.business_address_timeline"
+[0m17:09:40.418024 [debug] [Thread-4 (]: Writing injected SQL for node "model.highstreet_tenure.business_addresses"
+[0m17:09:40.418367 [debug] [Thread-3 (]: Began compiling node model.highstreet_tenure.businesses
+[0m17:09:40.418596 [debug] [Thread-2 (]: Began compiling node model.highstreet_tenure.properties
+[0m17:09:40.421840 [debug] [Thread-3 (]: Writing injected SQL for node "model.highstreet_tenure.businesses"
+[0m17:09:40.424185 [debug] [Thread-2 (]: Writing injected SQL for node "model.highstreet_tenure.properties"
+[0m17:09:40.424502 [debug] [Thread-4 (]: Began executing node model.highstreet_tenure.business_addresses
+[0m17:09:40.424788 [debug] [Thread-1 (]: Began executing node model.highstreet_tenure.business_address_timeline
+[0m17:09:40.427213 [debug] [Thread-4 (]: Writing runtime sql for node "model.highstreet_tenure.business_addresses"
+[0m17:09:40.429371 [debug] [Thread-1 (]: Writing runtime sql for node "model.highstreet_tenure.business_address_timeline"
+[0m17:09:40.429646 [debug] [Thread-3 (]: Began executing node model.highstreet_tenure.businesses
+[0m17:09:40.429892 [debug] [Thread-2 (]: Began executing node model.highstreet_tenure.properties
+[0m17:09:40.433061 [debug] [Thread-3 (]: Writing runtime sql for node "model.highstreet_tenure.businesses"
+[0m17:09:40.433482 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.business_addresses"
+[0m17:09:40.435621 [debug] [Thread-2 (]: Writing runtime sql for node "model.highstreet_tenure.properties"
+[0m17:09:40.435940 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_address_timeline"
+[0m17:09:40.436312 [debug] [Thread-4 (]: On model.highstreet_tenure.business_addresses: BEGIN
+[0m17:09:40.436595 [debug] [Thread-1 (]: On model.highstreet_tenure.business_address_timeline: BEGIN
+[0m17:09:40.436818 [debug] [Thread-3 (]: Using postgres connection "model.highstreet_tenure.businesses"
+[0m17:09:40.437050 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:09:40.437275 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m17:09:40.437499 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.properties"
+[0m17:09:40.437715 [debug] [Thread-3 (]: On model.highstreet_tenure.businesses: BEGIN
+[0m17:09:40.438104 [debug] [Thread-2 (]: On model.highstreet_tenure.properties: BEGIN
+[0m17:09:40.438377 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m17:09:40.438644 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:09:40.491577 [debug] [Thread-4 (]: SQL status: BEGIN in 0.054 seconds
+[0m17:09:40.491945 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.business_addresses"
+[0m17:09:40.492225 [debug] [Thread-4 (]: On model.highstreet_tenure.business_addresses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_addresses"} */
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."business_addresses__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with business_addresses_new as (
+    select distinct full_property_address as business_address, primary_liable_party_name as business_name from "highstreet"."analytics_analytics"."stg_new_businesses"
+
+),
+
+business_addresses_accounts_no_relief as (
+    select distinct full_property_address as business_address, primary_liable_party_name as business_name from "highstreet"."analytics_analytics"."stg_accounts_no_relief"
+
+),
+
+business_addresses_accounts_relief as (
+    select distinct full_property_address as business_address, primary_liable_party_name as business_name from "highstreet"."analytics_analytics"."stg_accounts_relief"
+
+),
+
+business_addresses_accounts_closed as (
+    select distinct full_property_address as business_address, primary_liable_party_name as business_name from "highstreet"."analytics_analytics"."stg_accounts_closed"
+
+),
+
+combined_business_addresses as (
+
+    select * from business_addresses_new
+    union 
+    select * from business_addresses_accounts_no_relief
+    union 
+    select * from business_addresses_accounts_relief
+    union 
+    select * from business_addresses_accounts_closed
+)
+
+select distinct 
+     
+    regexp_replace(
+        lower(
+            trim(
+                regexp_replace(                   -- collapse multiple spaces
+                    regexp_replace(               -- remove non-alphanumeric (keep space)
+                        regexp_replace(           -- replace "&" with "and"
+                            business_name,
+                            '&', 'and', 'gi'
+                        ),
+                        '[^a-zA-Z0-9 ]', '', 'g'
+                    ),
+                    '\\s+', ' ', 'g'
+                )
+            )
+        ),
+        '^ta ', '', 'g'
+    )
+ as business_name,
+    business_address,
+    split_part(business_address, ',', -1) as postcode
+from combined_business_addresses
+-- where lower(business_address) like '%st peters street%' 
+-- or lower(business_address) like '%market place%'
+-- or lower(business_address) like '%french row%'
+-- or lower(business_address) like '%checker st%'
+-- or lower(business_address) like '%george st%'
+-- or lower(business_address) like '%holywell hill%'
+-- or lower(business_address) like '%london r%'
+-- or lower(business_address) like '%victoria st%'
+-- or lower(business_address) like '%hatfield r%'
+  );
+  
+[0m17:09:40.495115 [debug] [Thread-3 (]: SQL status: BEGIN in 0.057 seconds
+[0m17:09:40.495401 [debug] [Thread-3 (]: Using postgres connection "model.highstreet_tenure.businesses"
+[0m17:09:40.495876 [debug] [Thread-3 (]: On model.highstreet_tenure.businesses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.businesses"} */
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."businesses__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with businesses_new as (
+    select distinct primary_liable_party_name as business_name from "highstreet"."analytics_analytics"."stg_new_businesses"
+
+),
+
+businesses_accounts_closed as (
+    select distinct primary_liable_party_name as business_name from "highstreet"."analytics_analytics"."stg_accounts_closed"
+
+),
+
+businesses_accounts_no_relief as (
+    select distinct primary_liable_party_name as business_name from "highstreet"."analytics_analytics"."stg_accounts_no_relief"
+
+),
+
+businesses_accounts_relief as (
+    select distinct primary_liable_party_name as business_name from "highstreet"."analytics_analytics"."stg_accounts_relief"
+
+),
+
+
+combined_businesses as (
+
+    select business_name from businesses_new
+    union 
+    select business_name from businesses_accounts_closed
+    union 
+    select business_name from businesses_accounts_no_relief
+    union 
+    select business_name from businesses_accounts_relief
+),
+
+normalized as (
+    select 
+        
+    regexp_replace(
+        lower(
+            trim(
+                regexp_replace(                   -- collapse multiple spaces
+                    regexp_replace(               -- remove non-alphanumeric (keep space)
+                        regexp_replace(           -- replace "&" with "and"
+                            business_name,
+                            '&', 'and', 'gi'
+                        ),
+                        '[^a-zA-Z0-9 ]', '', 'g'
+                    ),
+                    '\\s+', ' ', 'g'
+                )
+            )
+        ),
+        '^ta ', '', 'g'
+    )
+ as name_norm,
+        business_name
+    from combined_businesses
+)
+
+select  
+business_name,
+ case
+    -- Supermarkets & large grocery
+    when name_norm ~* '(tesco|sainsbury|asda|morrisons|waitrose|iceland|aldi|lidl|co\s*op|cooperative|marks and spencer|m\s*&?\s*s|mands\s*food|mands)' then 'Supermarket'
+
+    -- Convenience, newsagents & off-licence chains
+    when name_norm ~* '(off\s*licen|convenience|corner shop|newsagent|costcutter|spar|londis|premier|best one|one stop|nisa|mace|bargain booze)' then 'Convenience & newsagent'
+
+    -- Pharmacy (before health & beauty to prioritise Boots, etc.)
+    when name_norm ~* '(pharmacy|chemist|boots(?!.*optician)|lloyds\s*pharmacy|well\s*pharmacy|numark)' then 'Pharmacy'
+
+    -- Opticians
+    when name_norm ~* '(optician|specsavers|vision express|scrivens|boots\s*optician)' then 'Optician'
+
+    -- Hair & beauty split
+    when name_norm ~* '(barber|barbers|barber shop)' then 'Barber'
+    when name_norm ~* '(nail|beauty|spa|tanning|aesthetics|lash|brow)' then 'Beauty salon'
+    when name_norm ~* '(hair|hairdresser|hairdressing|salon)' then 'Hair salon'
+
+    -- Coffee shops & cafes
+    when name_norm ~* '(costa|starbucks|caffe\s*nero|nero|pret\s*a\s*manger|tim\s*hortons|coffee|espresso|cafe|tea\s*room|tearoom|bistro|brasserie)' then 'Cafe / coffee shop'
+
+    -- Bakeries & sandwich
+    when name_norm ~* '(bakery|patisserie|baguette|greggs|cake shop|cupcake|patisserie valerie)' then 'Bakery & sandwich'
+
+    -- Fast food & national QSR chains
+    when name_norm ~* '(mcdonald|kfc|burger\s*king|subway|domino|pizza\s*hut|papa\s*john|five\s*guys|shake\s*shack|chicken\s*cottage|morleys|favorite\s*chicken)' then 'Fast food / takeaway'
+
+    -- Fish & chips and generic takeaways
+    when name_norm ~* '(fish\s*(and|\&)\s*chips|chippy|chip shop|kebab|peri\s*peri|fried\s*chicken|takeaway|noodle|ramen|sushi|shawarma|doner|curry|tandoori|balti|pizzeria)' then 'Fast food / takeaway'
+
+    -- Restaurants (casual & full service)
+    when name_norm ~* '(restaurant|ristorante|trattoria|grill|steakhouse|thai|indian|chinese|italian|mexican|tapas|lebanese|turkish|korean|brazilian|argentinian|ethiopian)' then 'Restaurant'
+
+    -- Pubs, bars & nightlife
+    when name_norm ~* '(pub|tavern|bar|inn|wetherspoon|wetherspoons|jd\s*wetherspoon|taproom|ale\s*house|brewery|nightclub|club\b|lounge)' then 'Pub / bar'
+
+    -- Banks & building societies
+    when name_norm ~* '(bank|lloyds|hsbc|natwest|barclays|santander|tsb|halifax|nationwide|virgin\s*money|metro\s*bank|yorkshire\s*bank|clydesdale\s*bank)' then 'Bank / building society'
+
+    -- Post office
+    when name_norm ~* '(post\s*office|postoffice)' then 'Post office'
+
+    -- Estate & letting agents
+    when name_norm ~* '(estate\s*agent|lettings|letting\s*agent|property\s*agent|savills|foxtons|haart|winkworth|connells|leaders|hunters|countrywide|purplebricks)' then 'Estate & letting agent'
+
+    -- Charity shops
+    when name_norm ~* '(oxfam|barnardo|british\s*heart\s*foundation|cancer\s*research|sue\s*ryder|mind\b|salvation\s*army|ymca|age\s*uk|shaw\s*trust)' then 'Charity shop'
+
+    -- Betting shops
+    when name_norm ~* '(ladbrokes|william\s*hill|betfred|coral|paddy\s*power|bookmaker|betting\s*shop)' then 'Betting shop'
+
+    -- Electronics & mobile
+    when name_norm ~* '(currys|pc\s*world|carphone|ee\b|vodafone|o2\b|three\b|3\s*store|apple\s*store|samsung\s*store|fone|phone\s*shop)' then 'Electronics & mobile'
+
+    -- Computers / tech repair
+    when name_norm ~* '(computer|laptop|it\s*service|tech\s*repair|phone\s*repair|ifix|repair\s*centre)' then 'Repair services'
+
+    -- Jewellers
+    when name_norm ~* '(jewell?er|goldsmith|pandora|ernest\s*jones|h\s*samuel|beaverbrooks)' then 'Jeweller'
+
+    -- Clothing & fashion
+    when name_norm ~* '(primark|h\s*&?\s*m\b|next\b|zara|uniqlo|river\s*island|new\s*look|topshop|burton|dorothy\s*perkins|jack\s*wills|fat\s*face|white\s*stuff|joules|superdry|all\s*saints|tk\s*maxx|tkmaxx)' then 'Clothing & fashion'
+
+    -- Shoes & footwear
+    when name_norm ~* '(clarks|schuh|foot\s*locker|deichmann|office\s*shoes|kurt\s*geiger|timberland)' then 'Shoes & footwear'
+
+    -- Sports & outdoors
+    when name_norm ~* '(sports\s*direct|jd\s*sports|decathlon|go\s*outdoors)' then 'Sports & outdoors'
+
+    -- Books & stationery
+    when name_norm ~* '(wh\s*smith|whsmith|waterstones|bookshop|book\s*store|ryman|paperchase|the\s*works|stationery)' then 'Books & stationery'
+
+    -- Home, DIY & hardware
+    when name_norm ~* '(wilko|wilkinson|b\s*&?\s*m\b|home\s*bargains|the\s*range|b\s*&?\s*q\b|wickes|screwfix|toolstation|homebase|ikea|robert\s*dyas|hardware|ironmonger)' then 'Home & DIY'
+
+    -- Furniture & homeware
+    when name_norm ~* '(furniture|sofa|bensons\s*for\s*beds|dfs\b|dreams\b|wren\s*kitchen|magnet\s*kitchen|bathstore)' then 'Furniture & homeware'
+
+    -- Garden & florists
+    when name_norm ~* '(garden\s*centre|gardencentre|garden\b|florist|flowers|bloom|interflora)' then 'Garden & florist'
+
+    -- Pets & vets
+    when name_norm ~* '(pets\s*at\s*home|pet\s*shop|aquatic|veterinar|\bvet\b|groomer|grooming|kennel|cattery)' then 'Pets & vets'
+
+    -- Automotive services
+    when name_norm ~* '(garage\b|mot\b|tyres?|autocent(re|er)|halfords|kwik\s*fit|kwikfit|ats\s*euromaster|euro\s*car\s*parts|car\s*wash|valet|valeting|dealership|showroom)' then 'Automotive services'
+
+    -- Travel agents
+    when name_norm ~* '(travel\s*agent|tui\b|thomas\s*cook|trailfinders|flight\s*centre|hays\s*travel)' then 'Travel agent'
+
+    -- Dry cleaning & laundry
+    when name_norm ~* '(dry\s*clean|launderette|laundrette|laundry|wash\s*and\s*fold|ironing)' then 'Dry cleaning & laundry'
+
+    -- Tailor & alterations
+    when name_norm ~* '(tailor|alteration|seamstress|bespoke\s*suit)' then 'Tailor & alterations'
+
+    -- Key cutting, shoe repair & photo
+    when name_norm ~* '(timpson|shoe\s*repair|key\s*cut|snappy\s*snaps|photo\s*centre|photograph)' then 'Key cutting & photo'
+
+    -- Education & childcare
+    when name_norm ~* '(nursery|pre\s*school|preschool|childcare|day\s*nursery|montessori|tuition|tutor|kumon)' then 'Education & childcare'
+
+    -- Medical & dental
+    when name_norm ~* '(dental|dentist|orthodontist|gp\s*surgery|medical\s*centre|clinic|physio|physiotherapy|chiropractic|osteopath|podiatr|dermatolog)' then 'Medical & dental'
+
+    -- Hotels & accommodation
+    when name_norm ~* '(hotel|guest\s*house|bed\s*and\s*breakfast|b\s*&?\s*b\b|bnb\b|hostel|premier\s*inn|travelodge|ibis|marriott|hilton|holiday\s*inn)' then 'Hotel & accommodation'
+
+    -- Leisure & entertainment
+    when name_norm ~* '(cinema|theatre|theater|bowling|escape\s*room|arcade|bingo)' then 'Leisure & entertainment'
+
+    else 'Unclassified'
+ end as business_category
+from normalized
+  );
+  
+[0m17:09:40.496423 [debug] [Thread-1 (]: SQL status: BEGIN in 0.059 seconds
+[0m17:09:40.496690 [debug] [Thread-2 (]: SQL status: BEGIN in 0.058 seconds
+[0m17:09:40.496960 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_address_timeline"
+[0m17:09:40.497196 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.properties"
+[0m17:09:40.497512 [debug] [Thread-1 (]: On model.highstreet_tenure.business_address_timeline: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_address_timeline"} */
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."business_address_timeline__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with account_ends as (
+    select distinct
+        primary_liable_party_name as business_name,
+        full_property_address as business_address,
+        account_start_date,
+        account_end_date,
+        account_end_date as event_date,
+        'account_end' as event_type,
+        property_reference_number as property_id,
+        source_file as source_file_name
+    from "highstreet"."analytics_analytics"."stg_accounts_closed"
+),
+
+accounts_new as (
+    select distinct
+        primary_liable_party_name as business_name, 
+        full_property_address as business_address,
+        liable_responsibility_start_date as account_start_date,
+        NULL as account_end_date,
+        liable_responsibility_start_date as event_date,
+        'account_start' as event_type,
+        property_reference_number as property_id,
+        source_file as source_file_name
+    from "highstreet"."analytics_analytics"."stg_new_businesses"
+),
+
+accounts_no_relief_active as (
+    select distinct
+        primary_liable_party_name as business_name, 
+        full_property_address as business_address,
+        liable_responsibility_start_date as account_start_date,
+        NULL as account_end_date,
+        valid_to as event_date, -- Event date derived from file metadata (filename)
+        'account_active' as event_type,
+        property_reference_number as property_id,
+        source_file as source_file_name
+    from "highstreet"."analytics_analytics"."stg_accounts_no_relief"
+),
+
+accounts_relief_active as (
+    select distinct
+        primary_liable_party_name as business_name, 
+        full_property_address as business_address,
+        liable_responsibility_start_date as account_start_date,
+        NULL as account_end_date,
+        valid_to as event_date, 
+        'account_active' as event_type,
+        property_reference_number as property_id,
+        source_file as source_file_name
+    from "highstreet"."analytics_analytics"."stg_accounts_relief"
+),
+
+combined_accounts as (
+    select distinct business_name, business_address, event_date, event_type, source_file_name from account_ends
+    union 
+    select distinct business_name, business_address, event_date, event_type, source_file_name from accounts_new
+    union all
+    select distinct business_name, business_address, event_date, event_type, source_file_name from accounts_no_relief_active
+    union all
+    select distinct business_name, business_address, event_date, event_type, source_file_name from accounts_relief_active
+)
+
+select 
+    
+    regexp_replace(
+        lower(
+            trim(
+                regexp_replace(                   -- collapse multiple spaces
+                    regexp_replace(               -- remove non-alphanumeric (keep space)
+                        regexp_replace(           -- replace "&" with "and"
+                            business_name,
+                            '&', 'and', 'gi'
+                        ),
+                        '[^a-zA-Z0-9 ]', '', 'g'
+                    ),
+                    '\\s+', ' ', 'g'
+                )
+            )
+        ),
+        '^ta ', '', 'g'
+    )
+ as business_name,
+    business_address, event_date, event_type, source_file_name,
+    concat('https://www.stalbans.gov.uk/sites/default/files/attachments/', source_file_name) as source_file_url,
+    to_char(event_date::date, 'YYYYMM')::int as year_month_key 
+from combined_accounts order by business_name, business_address, event_date
+  );
+  
+[0m17:09:40.497861 [debug] [Thread-2 (]: On model.highstreet_tenure.properties: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.properties"} */
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."properties__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with properties_new as (
+    select distinct full_property_address as property_address, property_reference_number as property_id from "highstreet"."analytics_analytics"."stg_new_businesses"
+
+),
+
+properties_accounts_no_relief as (
+    select distinct full_property_address as property_address, property_reference_number as property_id from "highstreet"."analytics_analytics"."stg_accounts_no_relief"
+
+),
+
+properties_accounts_relief as (
+    select distinct full_property_address as property_address, property_reference_number as property_id from "highstreet"."analytics_analytics"."stg_accounts_relief"
+
+),
+
+properties_accounts_closed as (
+    select distinct full_property_address as property_address, property_reference_number as property_id from "highstreet"."analytics_analytics"."stg_accounts_closed"
+
+),
+
+combined_properties as (
+
+    select * from properties_new
+    union 
+    select * from properties_accounts_no_relief
+    union 
+    select * from properties_accounts_relief
+    union 
+    select * from properties_accounts_closed
+)
+
+select distinct property_id, property_address from combined_properties
+  );
+  
+[0m17:09:40.824791 [debug] [Thread-2 (]: SQL status: SELECT 9083 in 0.326 seconds
+[0m17:09:40.830465 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.properties"
+[0m17:09:40.830794 [debug] [Thread-2 (]: On model.highstreet_tenure.properties: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.properties"} */
+alter table "highstreet"."analytics_analytics"."properties" rename to "properties__dbt_backup"
+[0m17:09:40.834948 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.004 seconds
+[0m17:09:40.836845 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.properties"
+[0m17:09:40.837084 [debug] [Thread-2 (]: On model.highstreet_tenure.properties: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.properties"} */
+alter table "highstreet"."analytics_analytics"."properties__dbt_tmp" rename to "properties"
+[0m17:09:40.838557 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m17:09:40.839542 [debug] [Thread-2 (]: On model.highstreet_tenure.properties: COMMIT
+[0m17:09:40.839786 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.properties"
+[0m17:09:40.839988 [debug] [Thread-2 (]: On model.highstreet_tenure.properties: COMMIT
+[0m17:09:40.846122 [debug] [Thread-2 (]: SQL status: COMMIT in 0.006 seconds
+[0m17:09:40.847668 [debug] [Thread-2 (]: Applying DROP to: "highstreet"."analytics_analytics"."properties__dbt_backup"
+[0m17:09:40.848062 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.properties"
+[0m17:09:40.848273 [debug] [Thread-2 (]: On model.highstreet_tenure.properties: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.properties"} */
+drop table if exists "highstreet"."analytics_analytics"."properties__dbt_backup" cascade
+[0m17:09:40.865001 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.016 seconds
+[0m17:09:40.865992 [debug] [Thread-2 (]: On model.highstreet_tenure.properties: Close
+[0m17:09:40.866516 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1086497e0>]}
+[0m17:09:40.866908 [info ] [Thread-2 (]: 10 of 13 OK created sql table model analytics_analytics.properties ............. [[32mSELECT 9083[0m in 0.45s]
+[0m17:09:40.867430 [debug] [Thread-2 (]: Finished running node model.highstreet_tenure.properties
+[0m17:09:40.868139 [debug] [Thread-2 (]: Began running node model.highstreet_tenure.addresses
+[0m17:09:40.869165 [info ] [Thread-2 (]: 11 of 13 START sql table model analytics_analytics.addresses ................... [RUN]
+[0m17:09:40.869778 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.highstreet_tenure.properties, now model.highstreet_tenure.addresses)
+[0m17:09:40.870042 [debug] [Thread-2 (]: Began compiling node model.highstreet_tenure.addresses
+[0m17:09:40.872014 [debug] [Thread-2 (]: Writing injected SQL for node "model.highstreet_tenure.addresses"
+[0m17:09:40.872568 [debug] [Thread-2 (]: Began executing node model.highstreet_tenure.addresses
+[0m17:09:40.878073 [debug] [Thread-2 (]: Writing runtime sql for node "model.highstreet_tenure.addresses"
+[0m17:09:40.878819 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.addresses"
+[0m17:09:40.879152 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses: BEGIN
+[0m17:09:40.879487 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:09:40.934266 [debug] [Thread-2 (]: SQL status: BEGIN in 0.055 seconds
+[0m17:09:40.934653 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.addresses"
+[0m17:09:40.934866 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.addresses"} */
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."addresses__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with properties as (
+    select * from "highstreet"."analytics_analytics"."properties"
+)
+
+select distinct property_address from properties
+  );
+  
+[0m17:09:41.032973 [debug] [Thread-2 (]: SQL status: SELECT 4945 in 0.098 seconds
+[0m17:09:41.073144 [debug] [Thread-4 (]: SQL status: SELECT 9440 in 0.581 seconds
+[0m17:09:41.074440 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.addresses"
+[0m17:09:41.076478 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.business_addresses"
+[0m17:09:41.076735 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.addresses"} */
+alter table "highstreet"."analytics_analytics"."addresses" rename to "addresses__dbt_backup"
+[0m17:09:41.076960 [debug] [Thread-4 (]: On model.highstreet_tenure.business_addresses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_addresses"} */
+alter table "highstreet"."analytics_analytics"."business_addresses" rename to "business_addresses__dbt_backup"
+[0m17:09:41.079998 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m17:09:41.081800 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.addresses"
+[0m17:09:41.082055 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.005 seconds
+[0m17:09:41.082350 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.addresses"} */
+alter table "highstreet"."analytics_analytics"."addresses__dbt_tmp" rename to "addresses"
+[0m17:09:41.084067 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.business_addresses"
+[0m17:09:41.084391 [debug] [Thread-4 (]: On model.highstreet_tenure.business_addresses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_addresses"} */
+alter table "highstreet"."analytics_analytics"."business_addresses__dbt_tmp" rename to "business_addresses"
+[0m17:09:41.085681 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m17:09:41.086475 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses: COMMIT
+[0m17:09:41.086703 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.addresses"
+[0m17:09:41.086951 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m17:09:41.087195 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses: COMMIT
+[0m17:09:41.087978 [debug] [Thread-4 (]: On model.highstreet_tenure.business_addresses: COMMIT
+[0m17:09:41.088256 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.business_addresses"
+[0m17:09:41.088451 [debug] [Thread-4 (]: On model.highstreet_tenure.business_addresses: COMMIT
+[0m17:09:41.095100 [debug] [Thread-2 (]: SQL status: COMMIT in 0.007 seconds
+[0m17:09:41.096636 [debug] [Thread-2 (]: Applying DROP to: "highstreet"."analytics_analytics"."addresses__dbt_backup"
+[0m17:09:41.096932 [debug] [Thread-4 (]: SQL status: COMMIT in 0.008 seconds
+[0m17:09:41.097336 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.addresses"
+[0m17:09:41.098758 [debug] [Thread-4 (]: Applying DROP to: "highstreet"."analytics_analytics"."business_addresses__dbt_backup"
+[0m17:09:41.098981 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.addresses"} */
+drop table if exists "highstreet"."analytics_analytics"."addresses__dbt_backup" cascade
+[0m17:09:41.099275 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.business_addresses"
+[0m17:09:41.099576 [debug] [Thread-4 (]: On model.highstreet_tenure.business_addresses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_addresses"} */
+drop table if exists "highstreet"."analytics_analytics"."business_addresses__dbt_backup" cascade
+[0m17:09:41.110569 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.011 seconds
+[0m17:09:41.111431 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses: Close
+[0m17:09:41.111820 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108761e10>]}
+[0m17:09:41.112219 [info ] [Thread-2 (]: 11 of 13 OK created sql table model analytics_analytics.addresses .............. [[32mSELECT 4945[0m in 0.24s]
+[0m17:09:41.112543 [debug] [Thread-2 (]: Finished running node model.highstreet_tenure.addresses
+[0m17:09:41.116976 [debug] [Thread-4 (]: SQL status: DROP TABLE in 0.017 seconds
+[0m17:09:41.117893 [debug] [Thread-4 (]: On model.highstreet_tenure.business_addresses: Close
+[0m17:09:41.118258 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108724700>]}
+[0m17:09:41.118632 [info ] [Thread-4 (]: 8 of 13 OK created sql table model analytics_analytics.business_addresses ...... [[32mSELECT 9440[0m in 0.71s]
+[0m17:09:41.119205 [debug] [Thread-4 (]: Finished running node model.highstreet_tenure.business_addresses
+[0m17:09:41.119735 [debug] [Thread-2 (]: Began running node model.highstreet_tenure.addresses_with_most_tenants
+[0m17:09:41.120085 [info ] [Thread-2 (]: 12 of 13 START sql view model analytics_analytics.addresses_with_most_tenants .. [RUN]
+[0m17:09:41.120389 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.highstreet_tenure.addresses, now model.highstreet_tenure.addresses_with_most_tenants)
+[0m17:09:41.120629 [debug] [Thread-2 (]: Began compiling node model.highstreet_tenure.addresses_with_most_tenants
+[0m17:09:41.124340 [debug] [Thread-2 (]: Writing injected SQL for node "model.highstreet_tenure.addresses_with_most_tenants"
+[0m17:09:41.125013 [debug] [Thread-2 (]: Began executing node model.highstreet_tenure.addresses_with_most_tenants
+[0m17:09:41.136533 [debug] [Thread-2 (]: Writing runtime sql for node "model.highstreet_tenure.addresses_with_most_tenants"
+[0m17:09:41.137183 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.addresses_with_most_tenants"
+[0m17:09:41.137401 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses_with_most_tenants: BEGIN
+[0m17:09:41.137597 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m17:09:41.187037 [debug] [Thread-2 (]: SQL status: BEGIN in 0.049 seconds
+[0m17:09:41.187429 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.addresses_with_most_tenants"
+[0m17:09:41.187667 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses_with_most_tenants: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.addresses_with_most_tenants"} */
+
+  create view "highstreet"."analytics_analytics"."addresses_with_most_tenants__dbt_tmp"
+    
+    
+  as (
+    with business_addresses as (
+    select * from "highstreet"."analytics_analytics"."business_addresses"
+)
+
+select 
+    business_address,
+    postcode,
+    left(postcode, 4) as postcode_three_letter,
+    count(distinct business_name) as tenant_count
+from business_addresses
+group by 1, 2
+  );
+[0m17:09:41.224182 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.036 seconds
+[0m17:09:41.226356 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.addresses_with_most_tenants"
+[0m17:09:41.226641 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses_with_most_tenants: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.addresses_with_most_tenants"} */
+alter table "highstreet"."analytics_analytics"."addresses_with_most_tenants__dbt_tmp" rename to "addresses_with_most_tenants"
+[0m17:09:41.230308 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m17:09:41.231145 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses_with_most_tenants: COMMIT
+[0m17:09:41.231384 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.addresses_with_most_tenants"
+[0m17:09:41.231584 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses_with_most_tenants: COMMIT
+[0m17:09:41.236383 [debug] [Thread-2 (]: SQL status: COMMIT in 0.005 seconds
+[0m17:09:41.238257 [debug] [Thread-2 (]: Applying DROP to: "highstreet"."analytics_analytics"."addresses_with_most_tenants__dbt_backup"
+[0m17:09:41.239839 [debug] [Thread-2 (]: Using postgres connection "model.highstreet_tenure.addresses_with_most_tenants"
+[0m17:09:41.240099 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses_with_most_tenants: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.addresses_with_most_tenants"} */
+drop view if exists "highstreet"."analytics_analytics"."addresses_with_most_tenants__dbt_backup" cascade
+[0m17:09:41.247182 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.007 seconds
+[0m17:09:41.248219 [debug] [Thread-2 (]: On model.highstreet_tenure.addresses_with_most_tenants: Close
+[0m17:09:41.248774 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107e1d4e0>]}
+[0m17:09:41.249279 [info ] [Thread-2 (]: 12 of 13 OK created sql view model analytics_analytics.addresses_with_most_tenants  [[32mCREATE VIEW[0m in 0.13s]
+[0m17:09:41.249624 [debug] [Thread-2 (]: Finished running node model.highstreet_tenure.addresses_with_most_tenants
+[0m17:09:43.864146 [debug] [Thread-1 (]: SQL status: SELECT 56080 in 3.366 seconds
+[0m17:09:43.866710 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_address_timeline"
+[0m17:09:43.867012 [debug] [Thread-1 (]: On model.highstreet_tenure.business_address_timeline: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_address_timeline"} */
+alter table "highstreet"."analytics_analytics"."business_address_timeline" rename to "business_address_timeline__dbt_backup"
+[0m17:09:43.870303 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m17:09:43.872421 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_address_timeline"
+[0m17:09:43.872734 [debug] [Thread-1 (]: On model.highstreet_tenure.business_address_timeline: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_address_timeline"} */
+alter table "highstreet"."analytics_analytics"."business_address_timeline__dbt_tmp" rename to "business_address_timeline"
+[0m17:09:43.874526 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.002 seconds
+[0m17:09:43.875415 [debug] [Thread-1 (]: On model.highstreet_tenure.business_address_timeline: COMMIT
+[0m17:09:43.875658 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_address_timeline"
+[0m17:09:43.875862 [debug] [Thread-1 (]: On model.highstreet_tenure.business_address_timeline: COMMIT
+[0m17:09:43.888350 [debug] [Thread-1 (]: SQL status: COMMIT in 0.012 seconds
+[0m17:09:43.890944 [debug] [Thread-1 (]: Applying DROP to: "highstreet"."analytics_analytics"."business_address_timeline__dbt_backup"
+[0m17:09:43.891307 [debug] [Thread-1 (]: Using postgres connection "model.highstreet_tenure.business_address_timeline"
+[0m17:09:43.891519 [debug] [Thread-1 (]: On model.highstreet_tenure.business_address_timeline: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_address_timeline"} */
+drop table if exists "highstreet"."analytics_analytics"."business_address_timeline__dbt_backup" cascade
+[0m17:09:43.925936 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.034 seconds
+[0m17:09:43.926960 [debug] [Thread-1 (]: On model.highstreet_tenure.business_address_timeline: Close
+[0m17:09:43.927372 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10867a9b0>]}
+[0m17:09:43.927783 [info ] [Thread-1 (]: 7 of 13 OK created sql table model analytics_analytics.business_address_timeline  [[32mSELECT 56080[0m in 3.52s]
+[0m17:09:43.928174 [debug] [Thread-1 (]: Finished running node model.highstreet_tenure.business_address_timeline
+[0m17:09:43.928618 [debug] [Thread-4 (]: Began running node model.highstreet_tenure.business_address_tenures
+[0m17:09:43.929026 [info ] [Thread-4 (]: 13 of 13 START sql table model analytics_analytics.business_address_tenures .... [RUN]
+[0m17:09:43.929325 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.highstreet_tenure.business_addresses, now model.highstreet_tenure.business_address_tenures)
+[0m17:09:43.929545 [debug] [Thread-4 (]: Began compiling node model.highstreet_tenure.business_address_tenures
+[0m17:09:43.931462 [debug] [Thread-4 (]: Writing injected SQL for node "model.highstreet_tenure.business_address_tenures"
+[0m17:09:43.931964 [debug] [Thread-4 (]: Began executing node model.highstreet_tenure.business_address_tenures
+[0m17:09:43.934013 [debug] [Thread-4 (]: Writing runtime sql for node "model.highstreet_tenure.business_address_tenures"
+[0m17:09:43.934501 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.business_address_tenures"
+[0m17:09:43.934788 [debug] [Thread-4 (]: On model.highstreet_tenure.business_address_tenures: BEGIN
+[0m17:09:43.935185 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m17:09:43.988258 [debug] [Thread-4 (]: SQL status: BEGIN in 0.053 seconds
+[0m17:09:43.988646 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.business_address_tenures"
+[0m17:09:43.988887 [debug] [Thread-4 (]: On model.highstreet_tenure.business_address_tenures: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_address_tenures"} */
+
+  
+    
+
+  create  table "highstreet"."analytics_analytics"."business_address_tenures__dbt_tmp"
+  
+  
+    as
+  
+  (
+    
+
+with business_address_timeline as (
+    select * from "highstreet"."analytics_analytics"."business_address_timeline" where lower(business_name) not like '%ratepayer%'
+),
+
+-- Normalise names
+business_address_timeline_normalised as (
+    select
+        business_address,
+        event_date,
+        business_name
+       
+    from business_address_timeline
+),
+
+business_address_tenures as (
+    select 
+        business_name,       
+        business_address,
+        min(event_date) as tenure_start_date,
+        max(event_date) as tenure_end_date
+    from business_address_timeline_normalised
+    group by 1,2
+)
+
+select 
+    business_name,
+    business_address,
+    tenure_start_date,
+    case 
+        when tenure_end_date = tenure_start_date then null 
+        else tenure_end_date 
+    end as tenure_end_date,
+    round((tenure_end_date::date - tenure_start_date::date)/365.25,1) as tenure_duration_years
+from business_address_tenures
+  );
+  
+[0m17:09:44.621141 [debug] [Thread-4 (]: SQL status: SELECT 7627 in 0.632 seconds
+[0m17:09:44.623446 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.business_address_tenures"
+[0m17:09:44.623727 [debug] [Thread-4 (]: On model.highstreet_tenure.business_address_tenures: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_address_tenures"} */
+alter table "highstreet"."analytics_analytics"."business_address_tenures" rename to "business_address_tenures__dbt_backup"
+[0m17:09:44.626678 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m17:09:44.630125 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.business_address_tenures"
+[0m17:09:44.630460 [debug] [Thread-4 (]: On model.highstreet_tenure.business_address_tenures: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_address_tenures"} */
+alter table "highstreet"."analytics_analytics"."business_address_tenures__dbt_tmp" rename to "business_address_tenures"
+[0m17:09:44.633940 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.003 seconds
+[0m17:09:44.634862 [debug] [Thread-4 (]: On model.highstreet_tenure.business_address_tenures: COMMIT
+[0m17:09:44.635096 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.business_address_tenures"
+[0m17:09:44.635290 [debug] [Thread-4 (]: On model.highstreet_tenure.business_address_tenures: COMMIT
+[0m17:09:44.638800 [debug] [Thread-4 (]: SQL status: COMMIT in 0.003 seconds
+[0m17:09:44.640343 [debug] [Thread-4 (]: Applying DROP to: "highstreet"."analytics_analytics"."business_address_tenures__dbt_backup"
+[0m17:09:44.640748 [debug] [Thread-4 (]: Using postgres connection "model.highstreet_tenure.business_address_tenures"
+[0m17:09:44.640958 [debug] [Thread-4 (]: On model.highstreet_tenure.business_address_tenures: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.business_address_tenures"} */
+drop table if exists "highstreet"."analytics_analytics"."business_address_tenures__dbt_backup" cascade
+[0m17:09:44.652438 [debug] [Thread-4 (]: SQL status: DROP TABLE in 0.011 seconds
+[0m17:09:44.655053 [debug] [Thread-4 (]: On model.highstreet_tenure.business_address_tenures: Close
+[0m17:09:44.656489 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1085ec610>]}
+[0m17:09:44.657010 [info ] [Thread-4 (]: 13 of 13 OK created sql table model analytics_analytics.business_address_tenures  [[32mSELECT 7627[0m in 0.73s]
+[0m17:09:44.657364 [debug] [Thread-4 (]: Finished running node model.highstreet_tenure.business_address_tenures
+[0m17:10:32.704953 [debug] [Thread-3 (]: SQL status: SELECT 6223 in 52.208 seconds
+[0m17:10:32.710414 [debug] [Thread-3 (]: Using postgres connection "model.highstreet_tenure.businesses"
+[0m17:10:32.710725 [debug] [Thread-3 (]: On model.highstreet_tenure.businesses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.businesses"} */
+alter table "highstreet"."analytics_analytics"."businesses" rename to "businesses__dbt_backup"
+[0m17:10:32.716440 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.005 seconds
+[0m17:10:32.719294 [debug] [Thread-3 (]: Using postgres connection "model.highstreet_tenure.businesses"
+[0m17:10:32.719542 [debug] [Thread-3 (]: On model.highstreet_tenure.businesses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.businesses"} */
+alter table "highstreet"."analytics_analytics"."businesses__dbt_tmp" rename to "businesses"
+[0m17:10:32.721121 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.001 seconds
+[0m17:10:32.721831 [debug] [Thread-3 (]: On model.highstreet_tenure.businesses: COMMIT
+[0m17:10:32.722038 [debug] [Thread-3 (]: Using postgres connection "model.highstreet_tenure.businesses"
+[0m17:10:32.722226 [debug] [Thread-3 (]: On model.highstreet_tenure.businesses: COMMIT
+[0m17:10:32.725266 [debug] [Thread-3 (]: SQL status: COMMIT in 0.003 seconds
+[0m17:10:32.726647 [debug] [Thread-3 (]: Applying DROP to: "highstreet"."analytics_analytics"."businesses__dbt_backup"
+[0m17:10:32.726961 [debug] [Thread-3 (]: Using postgres connection "model.highstreet_tenure.businesses"
+[0m17:10:32.727160 [debug] [Thread-3 (]: On model.highstreet_tenure.businesses: /* {"app": "dbt", "dbt_version": "1.10.11", "profile_name": "highstreet_local", "target_name": "dev", "node_id": "model.highstreet_tenure.businesses"} */
+drop table if exists "highstreet"."analytics_analytics"."businesses__dbt_backup" cascade
+[0m17:10:32.738354 [debug] [Thread-3 (]: SQL status: DROP TABLE in 0.011 seconds
+[0m17:10:32.741616 [debug] [Thread-3 (]: On model.highstreet_tenure.businesses: Close
+[0m17:10:32.742614 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '5a6fd105-09fb-45bf-8417-143f38b2ade8', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108621660>]}
+[0m17:10:32.743183 [info ] [Thread-3 (]: 9 of 13 OK created sql table model analytics_analytics.businesses .............. [[32mSELECT 6223[0m in 52.33s]
+[0m17:10:32.743625 [debug] [Thread-3 (]: Finished running node model.highstreet_tenure.businesses
+[0m17:10:32.744445 [debug] [MainThread]: Using postgres connection "master"
+[0m17:10:32.744664 [debug] [MainThread]: On master: BEGIN
+[0m17:10:32.744836 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m17:10:32.809005 [debug] [MainThread]: SQL status: BEGIN in 0.064 seconds
+[0m17:10:32.809524 [debug] [MainThread]: On master: COMMIT
+[0m17:10:32.809785 [debug] [MainThread]: Using postgres connection "master"
+[0m17:10:32.809976 [debug] [MainThread]: On master: COMMIT
+[0m17:10:32.818244 [debug] [MainThread]: SQL status: COMMIT in 0.008 seconds
+[0m17:10:32.818572 [debug] [MainThread]: On master: Close
+[0m17:10:32.818930 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m17:10:32.819113 [debug] [MainThread]: Connection 'model.highstreet_tenure.business_address_timeline' was properly closed.
+[0m17:10:32.819280 [debug] [MainThread]: Connection 'model.highstreet_tenure.addresses_with_most_tenants' was properly closed.
+[0m17:10:32.819441 [debug] [MainThread]: Connection 'model.highstreet_tenure.business_address_tenures' was properly closed.
+[0m17:10:32.819598 [debug] [MainThread]: Connection 'model.highstreet_tenure.businesses' was properly closed.
+[0m17:10:32.819856 [info ] [MainThread]: 
+[0m17:10:32.820060 [info ] [MainThread]: Finished running 12 table models, 1 view model in 0 hours 0 minutes and 54.26 seconds (54.26s).
+[0m17:10:32.821234 [debug] [MainThread]: Command end result
+[0m17:10:32.839717 [debug] [MainThread]: Wrote artifact WritableManifest to /Users/samydoreau/data-j/highstreet-tenure/target/manifest.json
+[0m17:10:32.841277 [debug] [MainThread]: Wrote artifact SemanticManifest to /Users/samydoreau/data-j/highstreet-tenure/target/semantic_manifest.json
+[0m17:10:32.845532 [debug] [MainThread]: Wrote artifact RunExecutionResult to /Users/samydoreau/data-j/highstreet-tenure/target/run_results.json
+[0m17:10:32.845775 [info ] [MainThread]: 
+[0m17:10:32.846021 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m17:10:32.846206 [info ] [MainThread]: 
+[0m17:10:32.846398 [info ] [MainThread]: Done. PASS=13 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=13
+[0m17:10:32.848894 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 54.96275, "process_in_blocks": "0", "process_kernel_time": 0.222501, "process_mem_max_rss": "142835712", "process_out_blocks": "0", "process_user_time": 1.779292}
+[0m17:10:32.849339 [debug] [MainThread]: Command `dbt run` succeeded at 17:10:32.849285 after 54.96 seconds
+[0m17:10:32.849578 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105b02920>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105e17fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x107dbf9d0>]}
+[0m17:10:32.849811 [debug] [MainThread]: Flushing usage events
+[0m17:10:33.423903 [debug] [MainThread]: An error was encountered while trying to flush usage events

@@ -10,6 +10,7 @@ library(timevis)
 library(RColorBrewer)
 library(stringdist)
 library(glue)
+library(leaflet.extras)
 
 db <- "highstreet"
 db_host <- "127.0.0.1"
@@ -36,6 +37,7 @@ get_connection <- function() {
 
 queries <- list(
   all_locations = "SELECT property_address, longitude, latitude from analytics_analytics.addresses_geocoded;",
+  all_businesses = "SELECT business_name, business_category from analytics_analytics;",
   addresses_with_most_tenants =  "SELECT 
 	    agg.business_address, agg.postcode, agg.postcode_three_letter, agg.tenant_count ,addr.latitude, addr.longitude
       from analytics_analytics.addresses_with_most_tenants agg
@@ -55,6 +57,7 @@ server <- function(input, output, session) {
   
   conn <- get_connection()
   all_locations_df<- dbGetQuery(conn, queries$all_locations)
+  all_businesses_df <- dbGetQuery(conn, queries$all_businesses)
   addresses_with_most_tenants_df <- dbGetQuery(conn,queries$addresses_with_most_tenants)
   business_address_tenures_df <- dbGetQuery(conn, queries$business_address_tenures)
   business_address_timelines_df <- dbGetQuery(conn, queries$business_address_timelines)
@@ -91,26 +94,21 @@ server <- function(input, output, session) {
   
   })
   
-  
-  pal <- colorNumeric(palette = c("green", "red"), domain = addresses_with_most_tenants_df$tenant_count)
-  observeEvent(input$locationsMap_shape_click, {
-    
-    click <- input$locationsMap_shape_click
-    if(!is.null(click)){
+  observeEvent(input$locationsMap_marker_click, {
+    click <- input$locationsMap_marker_click
+    if (!is.null(click)) {
+      addr <- click$id   # because you set layerId = ~business_address
       df <- business_address_tenures_df %>%
-        filter(business_address == click$id) %>% 
-        rename('content' = 'business_name') %>% 
-        rename('start' = 'tenure_start_date') %>% 
-        rename('end' = 'tenure_end_date') %>% 
-        mutate(id = row_number()) %>% 
+        filter(business_address == addr) %>%
+        rename(content = business_name, start = tenure_start_date, end = tenure_end_date) %>%
+        mutate(id = row_number()) %>%
         filter(start != '', !is.na(start))
-      
-      
       filtered_business_addresses_tenures_df(df)
     } else {
       filtered_business_addresses_tenures_df(NULL)
     }
   })
+  
   
   observeEvent(input$businessAddressTenureTimeline_selected, {
     sel_id <- input$businessAddressTenureTimeline_selected
@@ -151,12 +149,13 @@ server <- function(input, output, session) {
           "<br><b>Tenants:</b> ", tenant_count
         )
       )
+    df$tenant_count <- as.numeric(df$tenant_count)
     
-    # pick a nice sequential palette (e.g. "YlOrRd")
-    pal <- colorNumeric(
-      palette = "YlOrRd",
-      domain = df$tenant_count
-    )
+
+    bins <- c(0,2,5,10, 12)
+    pal <- colorBin("YlOrRd", domain = df$tenant_count, bins = bins, na.color = "grey")
+    
+    
     
     leaflet(df) %>%
       addTiles() %>%
@@ -164,7 +163,7 @@ server <- function(input, output, session) {
                 ~max(longitude), ~max(latitude)) %>%
       setView(lng = ST_ABLANS_CENTER_COORDS[1],
               lat = ST_ABLANS_CENTER_COORDS[2], zoom = 13) %>%
-      addCircles(
+      addCircleMarkers(
         lng = ~longitude,
         lat = ~latitude,
         popup = ~popup_text,
@@ -173,14 +172,16 @@ server <- function(input, output, session) {
         weight = 1,
         fillOpacity = 0.8,
         radius = ~tenant_count * 3,   # scale radius by tenant count
-        layerId = ~business_address
-      ) 
-      # addLegend(
-      #   pal = pal,
-      #   values = df$tenant_count,
-      #   title = "Tenant count",
-      #   opacity = 1
-      # )
+        layerId = ~business_address,
+        clusterOptions = markerClusterOptions(spiderfyOnMaxZoom = TRUE, showCoverageOnHover = FALSE, zoomToBoundsOnClick = TRUE)
+      ) %>%
+      addLegend(
+        pal = pal,
+        values = df$tenant_count,
+        title = "Tenant count",
+        opacity = 1
+      )
+     
   })
   
   
