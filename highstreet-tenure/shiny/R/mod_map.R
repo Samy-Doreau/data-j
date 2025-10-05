@@ -1,26 +1,20 @@
 mod_map_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    selectInput(ns("postcodeInput"), "Postcode prefix", choices = NULL, multiple = TRUE),
     leafletOutput(ns("locationsMap"), height = "600px")
   )
 }
 
-mod_map_server <- function(id, data, selected_address) {
+mod_map_server <- function(id, data, selected_address, selected_postcodes = NULL) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
 
-    postcodes_df <- data$business_addresses_df %>%
-      distinct(postcode_three_letter) %>%
-      rename(value = postcode_three_letter) %>%
-      mutate(label = value)
-
-    updateSelectInput(session, "postcodeInput", choices = postcodes_df)
-
     filtered_locations_df <- reactive({
       df <- data$addresses_with_most_tenants_df
-      if (!is.null(input$postcodeInput) && length(input$postcodeInput) > 0)
-        df <- df %>% filter(postcode_three_letter %in% input$postcodeInput)
+      sel <- NULL
+      if (!is.null(selected_postcodes)) sel <- selected_postcodes()
+      if (!is.null(sel) && length(sel) > 0)
+        df <- df %>% filter(postcode_three_letter %in% sel)
       df
     })
 

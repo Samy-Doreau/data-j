@@ -2,9 +2,10 @@ ui <- fluidPage(
   titlePanel("St Albans Business Timeline"),
   sidebarLayout(
     sidebarPanel(
-      mod_map_ui("map_module")
+      mod_postcode_selector_ui("postcode_selector_module")
     ),
     mainPanel(
+      mod_map_ui("map_module"),
       mod_timeline_ui("timeline_module"),
       mod_details_ui("details_module")
     )
@@ -23,8 +24,10 @@ server <- function(input, output, session) {
 
   selected_address <- reactiveVal()
   selected_business_name <- reactiveVal()
+  selected_postcodes <- mod_postcode_selector_server("postcode_selector_module", data)
 
-  mod_map_server("map_module", data, selected_address)
+  mod_map_server("map_module", data, selected_address, selected_postcodes)
   mod_timeline_server("timeline_module", data, selected_address, selected_business_name)
   mod_details_server("details_module", data, selected_business_name)
+
 }

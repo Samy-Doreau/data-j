@@ -36,7 +36,7 @@ mod_timeline_server <- function(id, data, selected_address, selected_business_na
       df <- filtered_df()
       if (is.null(df) || nrow(df) == 0)
         df <- data.frame(id = character(), content = character(), start = character())
-      timevis(df, group = TRUE)
+      timevis(df)
     })
   })
 }

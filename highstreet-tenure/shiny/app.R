@@ -14,6 +14,7 @@ source("R/queries.R")
 source("R/helpers.R")
 
 # Load modules
+source("R/mod_postcode_selector.R")
 source("R/mod_map.R")
 source("R/mod_timeline.R")
 source("R/mod_details.R")
